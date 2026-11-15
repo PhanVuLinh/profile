@@ -1,0 +1,89 @@
+<!doctype html>
+<html lang="vi" class="dark scroll-smooth">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0" />
+    
+    <!-- Primary Meta Tags -->
+    <title>Phan Vũ Linh — Web Developer | Fullstack Portfolio</title>
+    <meta name="title" content="Phan Vũ Linh — Web Developer | Fullstack Portfolio" />
+    <meta name="description" content="Portfolio của Phan Vũ Linh — Web Developer (Fullstack Intern/Fresher). Sinh viên năm cuối CNTT ĐH Công nghệ Sài Gòn. Kinh nghiệm Laravel, Node.js, React 19, Redis, Docker, cổng thanh toán VNPay/ZaloPay, RBAC." />
+    <meta name="keywords" content="Phan Vũ Linh, Web Developer, Fullstack Developer, Laravel, React 19, Node.js, Express, Tailwind CSS, Redis, Docker, VNPay, ZaloPay, Portfolio" />
+    <meta name="author" content="Phan Vũ Linh" />
+    <meta name="theme-color" content="#07070B" />
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="profile" />
+    <meta property="og:url" content="https://github.com/PhanVuLinh" />
+    <meta property="og:title" content="Phan Vũ Linh — Web Developer Portfolio" />
+    <meta property="og:description" content="Portfolio của Phan Vũ Linh — Web Developer (Fullstack Intern/Fresher). Hệ thống đặt tour TravelGo, TMĐT TitiSport, thực tập TechVanguard." />
+    <meta property="og:image" content="/avatar.png" />
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image" />
+    <meta property="twitter:title" content="Phan Vũ Linh — Web Developer Portfolio" />
+    <meta property="twitter:description" content="Portfolio của Phan Vũ Linh — Web Developer (Fullstack Intern/Fresher). Hệ thống đặt tour TravelGo, TMĐT TitiSport, thực tập TechVanguard." />
+    <meta property="twitter:image" content="/avatar.png" />
+
+    <!-- Google Fonts: Space Grotesk, JetBrains Mono, Inter, Syne -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&family=Space+Grotesk:wght@400;500;600;700;800&family=Syne:wght@700;800&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- JSON-LD Structured Data for Person -->
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "Person",
+        "name": "Phan Vũ Linh",
+        "jobTitle": "Web Developer (Fullstack Intern/Fresher)",
+        "url": "https://github.com/PhanVuLinh",
+        "email": "linhphanzzz04@gmail.com",
+        "telephone": "+84343842424",
+        "address": {
+          "@type": "PostalAddress",
+          "addressLocality": "Hồ Chí Minh",
+          "addressCountry": "VN"
+        },
+        "alumniOf": {
+          "@type": "EducationalOrganization",
+          "name": "Đại học Công nghệ Sài Gòn (STU)"
+        },
+        "knowsAbout": [
+          "Laravel",
+          "React 19",
+          "Node.js",
+          "MySQL",
+          "Redis",
+          "Docker",
+          "VNPay",
+          "ZaloPay",
+          "Fullstack Development"
+        ]
+      }
+    </script>
+
+    <!-- Prevent FOUC for dark/light mode -->
+    <script>
+      (function() {
+        try {
+          var saved = localStorage.getItem('pvl_theme');
+          var theme = saved || (window.matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark');
+          if (theme === 'dark') {
+            document.documentElement.classList.add('dark');
+          } else {
+            document.documentElement.classList.remove('dark');
+          }
+        } catch (e) {}
+      })();
+    </script>
+  </head>
+  <body class="bg-[#07070B] text-[#EDEDF2] antialiased selection:bg-[#C8FF2E]/30 selection:text-[#C8FF2E] overflow-x-hidden">
+    <div id="root"></div>
+    <script type="module" src="/src/main.tsx"></script>
+  </body>
+</html>

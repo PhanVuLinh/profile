@@ -1,0 +1,46 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400" width="400" height="400">
+  <defs>
+    <linearGradient id="bgGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0E131F" />
+      <stop offset="50%" stop-color="#0A0A0F" />
+      <stop offset="100%" stop-color="#051B1E" />
+    </linearGradient>
+    <linearGradient id="textGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#00F0FF" />
+      <stop offset="50%" stop-color="#34D399" />
+      <stop offset="100%" stop-color="#10B981" />
+    </linearGradient>
+    <linearGradient id="ringGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#00F0FF" stop-opacity="0.8" />
+      <stop offset="100%" stop-color="#10B981" stop-opacity="0.2" />
+    </linearGradient>
+    <radialGradient id="centerGlow" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#00F0FF" stop-opacity="0.25" />
+      <stop offset="100%" stop-color="#00F0FF" stop-opacity="0" />
+    </radialGradient>
+    <!-- Grid pattern -->
+    <pattern id="grid" width="20" height="20" patternUnits="userSpaceOnUse">
+      <path d="M 20 0 L 0 0 0 20" fill="none" stroke="rgba(255, 255, 255, 0.05)" stroke-width="1"/>
+    </pattern>
+  </defs>
+
+  <!-- Background -->
+  <rect width="400" height="400" rx="40" fill="url(#bgGrad)" />
+  <rect width="400" height="400" rx="40" fill="url(#grid)" />
+  <circle cx="200" cy="200" r="160" fill="url(#centerGlow)" />
+
+  <!-- Outer Ring -->
+  <circle cx="200" cy="200" r="150" fill="none" stroke="url(#ringGrad)" stroke-width="3" stroke-dasharray="12 6" />
+  <circle cx="200" cy="200" r="130" fill="#0A0A12" stroke="rgba(255,255,255,0.08)" stroke-width="2" />
+
+  <!-- Monogram PL -->
+  <g text-anchor="middle" dominant-baseline="central">
+    <text x="200" y="195" font-family="'Space Grotesk', 'JetBrains Mono', sans-serif" font-size="110" font-weight="800" fill="url(#textGrad)" letter-spacing="4">PL</text>
+    <text x="200" y="260" font-family="'JetBrains Mono', monospace" font-size="14" font-weight="600" fill="#94A3B8" letter-spacing="3">PHAN VU LINH</text>
+  </g>
+
+  <!-- Terminal dots on top left -->
+  <circle cx="45" cy="45" r="5" fill="#EF4444" opacity="0.8"/>
+  <circle cx="62" cy="45" r="5" fill="#F59E0B" opacity="0.8"/>
+  <circle cx="79" cy="45" r="5" fill="#10B981" opacity="0.8"/>
+</svg>
