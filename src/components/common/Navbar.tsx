@@ -163,21 +163,21 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenCommandPalette }) => {
       </div>
 
       {/* Floating Editorial Island Navbar */}
-      <div className="mx-auto max-w-5xl px-3 pt-3 sm:px-6">
+      <div className="mx-auto max-w-6xl px-2 pt-3 sm:px-4 md:px-6">
         <nav
           aria-label="Thanh điều hướng chính"
-          className="flex h-13 sm:h-14 items-center justify-between rounded-full border border-slate-200/80 bg-white/85 px-3 sm:px-4 shadow-lg backdrop-blur-2xl transition-colors dark:border-white/10 dark:bg-[#07070B]/85 dark:shadow-[0_10px_35px_rgba(0,0,0,0.4)]"
+          className="flex h-13 sm:h-14 items-center justify-between rounded-full border border-slate-200/80 bg-white/90 px-2.5 sm:px-4 shadow-lg backdrop-blur-2xl transition-colors dark:border-white/10 dark:bg-[#07070B]/85 dark:shadow-[0_10px_35px_rgba(0,0,0,0.4)]"
         >
           {/* Brand Logo / Terminal Monogram */}
           <button
             onClick={handleLogoClick}
             title={lang === 'vi' ? 'Nhấn 5 lần để nhận bất ngờ!' : 'Click 5 times for a surprise!'}
-            className="group flex items-center space-x-2 rounded-full transition-transform hover:scale-105 focus:outline-none cursor-pointer pl-1"
+            className="group flex items-center space-x-2 rounded-full transition-transform hover:scale-105 focus:outline-none cursor-pointer pl-1 shrink-0 whitespace-nowrap"
           >
             <div className="flex h-7 w-7 sm:h-8 sm:w-8 items-center justify-center rounded-full border border-slate-300 bg-slate-100 text-slate-800 shadow-xs transition-colors dark:border-[#C8FF2E]/40 dark:bg-[#C8FF2E]/10 dark:text-[#C8FF2E]">
               <Terminal className="h-3.5 w-3.5" />
             </div>
-            <div className="flex items-baseline space-x-0.5 font-mono">
+            <div className="flex items-baseline space-x-0.5 font-mono whitespace-nowrap">
               <span className="text-xs sm:text-sm font-bold tracking-tight text-slate-900 group-hover:text-emerald-700 transition-colors dark:text-[#EDEDF2] dark:group-hover:text-[#C8FF2E]">
                 PL
               </span>
@@ -187,15 +187,15 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenCommandPalette }) => {
             </div>
           </button>
 
-          {/* Desktop Nav Items (Clean Editorial Floating Pill Group) */}
-          <div className="hidden lg:flex items-center space-x-1 rounded-full bg-slate-100/80 p-1 border border-slate-200/60 dark:bg-white/5 dark:border-white/5">
+          {/* Desktop Nav Items (Clean Editorial Floating Pill Group - Protected from Text Wrapping) */}
+          <div className="hidden lg:flex items-center space-x-0.5 xl:space-x-1 rounded-full bg-slate-100/80 p-1 border border-slate-200/60 dark:bg-white/5 dark:border-white/5 shrink-0">
             {navLinks.map((link) => {
               const isActive = activeSection === link.id;
               return (
                 <button
                   key={link.id}
                   onClick={() => scrollTo(link.id)}
-                  className={`rounded-full px-3 py-1 text-xs font-mono transition-all duration-150 cursor-pointer ${
+                  className={`rounded-full px-2.5 xl:px-3 py-1 text-xs font-mono whitespace-nowrap shrink-0 transition-all duration-150 cursor-pointer ${
                     isActive
                       ? 'bg-white text-slate-950 font-bold shadow-xs dark:bg-white/15 dark:text-[#C8FF2E]'
                       : 'text-slate-600 hover:text-slate-950 dark:text-[#8A8A9A] dark:hover:text-[#EDEDF2]'
@@ -208,12 +208,12 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenCommandPalette }) => {
           </div>
 
           {/* Right Action Group: Search, Quality Menu, Lang, Theme, CV Button */}
-          <div className="flex items-center space-x-1.5 sm:space-x-2">
+          <div className="flex items-center space-x-1 sm:space-x-1.5 md:space-x-2 shrink-0">
             {/* Command palette pill (⌘K) */}
             <button
               onClick={onOpenCommandPalette}
               title={lang === 'vi' ? 'Mở thanh lệnh (Ctrl+K)' : 'Command palette (Ctrl+K)'}
-              className="flex h-8 items-center space-x-1 rounded-full border border-slate-200/80 bg-white/80 px-2 sm:px-2.5 font-mono text-xs text-slate-600 shadow-xs hover:border-slate-300 hover:text-slate-950 transition-colors cursor-pointer dark:border-white/10 dark:bg-white/5 dark:text-[#8A8A9A] dark:hover:border-[#C8FF2E] dark:hover:text-[#C8FF2E]"
+              className="flex h-8 items-center space-x-1 rounded-full border border-slate-200/80 bg-white/80 px-2 sm:px-2.5 font-mono text-xs text-slate-600 shadow-xs hover:border-slate-300 hover:text-slate-950 transition-colors cursor-pointer whitespace-nowrap shrink-0 dark:border-white/10 dark:bg-white/5 dark:text-[#8A8A9A] dark:hover:border-[#C8FF2E] dark:hover:text-[#C8FF2E]"
             >
               <Search className="h-3.5 w-3.5" />
               <kbd className="hidden sm:inline-block rounded bg-slate-100 px-1 py-0.2 text-[9px] font-bold text-slate-700 dark:bg-white/10 dark:text-[#EDEDF2]">
@@ -298,7 +298,7 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenCommandPalette }) => {
             <button
               onClick={toggleLang}
               aria-label={lang === 'vi' ? 'Chuyển sang Tiếng Anh' : 'Switch to Vietnamese'}
-              className="flex h-8 items-center rounded-full border border-slate-200/80 bg-white/80 px-2.5 font-mono text-[11px] font-bold text-slate-700 shadow-xs hover:border-slate-300 transition-colors cursor-pointer dark:border-white/10 dark:bg-white/5 dark:text-[#EDEDF2] dark:hover:border-white/20"
+              className="flex h-8 items-center rounded-full border border-slate-200/80 bg-white/80 px-2.5 font-mono text-[11px] font-bold text-slate-700 shadow-xs hover:border-slate-300 transition-colors cursor-pointer whitespace-nowrap shrink-0 dark:border-white/10 dark:bg-white/5 dark:text-[#EDEDF2] dark:hover:border-white/20"
             >
               <span className={lang === 'vi' ? 'text-emerald-700 dark:text-[#C8FF2E] font-black' : 'opacity-40'}>
                 VI
@@ -313,7 +313,7 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenCommandPalette }) => {
             <button
               onClick={toggleTheme}
               aria-label={theme === 'dark' ? 'Chuyển giao diện sáng' : 'Switch to dark theme'}
-              className="flex h-8 w-8 items-center justify-center rounded-full border border-slate-200/80 bg-white/80 text-slate-700 shadow-xs hover:text-slate-950 transition-colors cursor-pointer dark:border-white/10 dark:bg-white/5 dark:text-[#8A8A9A] dark:hover:text-[#C8FF2E]"
+              className="flex h-8 w-8 items-center justify-center rounded-full border border-slate-200/80 bg-white/80 text-slate-700 shadow-xs hover:text-slate-950 transition-colors cursor-pointer whitespace-nowrap shrink-0 dark:border-white/10 dark:bg-white/5 dark:text-[#8A8A9A] dark:hover:text-[#C8FF2E]"
             >
               {theme === 'dark' ? (
                 <Sun className="h-3.5 w-3.5 text-[#C8FF2E]" />
@@ -322,7 +322,7 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenCommandPalette }) => {
               )}
             </button>
 
-            {/* Quick Recruiter Candidate Brief (HR Utility) */}
+            {/* Quick Recruiter Candidate Brief (HR Utility - Visible on XL desktop, keeps navbar breathable on laptops) */}
             <button
               onClick={() => copyRecruiterBrief(lang, showToast)}
               title={
@@ -330,7 +330,7 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenCommandPalette }) => {
                   ? 'Sao chép tóm tắt ứng viên cho Recruiter (Markdown)'
                   : 'Copy Recruiter Candidate Brief (Markdown)'
               }
-              className="hidden sm:inline-flex h-8 items-center space-x-1.5 rounded-full border border-emerald-500/30 bg-emerald-500/10 px-2.5 font-mono text-xs font-semibold text-emerald-700 hover:bg-emerald-500/20 transition-all cursor-pointer dark:border-[#C8FF2E]/30 dark:bg-[#C8FF2E]/10 dark:text-[#C8FF2E] dark:hover:bg-[#C8FF2E]/20"
+              className="hidden xl:inline-flex h-8 items-center space-x-1.5 rounded-full border border-emerald-500/30 bg-emerald-500/10 px-2.5 font-mono text-xs font-semibold text-emerald-700 hover:bg-emerald-500/20 transition-all cursor-pointer whitespace-nowrap shrink-0 dark:border-[#C8FF2E]/30 dark:bg-[#C8FF2E]/10 dark:text-[#C8FF2E] dark:hover:bg-[#C8FF2E]/20"
             >
               <Sparkles className="h-3 w-3 animate-pulse" />
               <span>{lang === 'vi' ? 'HR Brief' : 'Recruiter Brief'}</span>
@@ -340,7 +340,7 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenCommandPalette }) => {
             <a
               href={CV_URL}
               download="CV_PhanVuLinh_FullstackDeveloper.pdf"
-              className="inline-flex h-8 items-center space-x-1 rounded-full px-3 font-mono text-xs font-bold shadow-sm transition-all active:scale-95 bg-slate-900 text-white hover:bg-slate-800 dark:bg-[#C8FF2E] dark:text-[#07070B] dark:hover:brightness-110 dark:shadow-[0_0_15px_rgba(200,255,46,0.3)]"
+              className="inline-flex h-8 items-center space-x-1 rounded-full px-3 font-mono text-xs font-bold shadow-sm transition-all active:scale-95 bg-slate-900 text-white hover:bg-slate-800 whitespace-nowrap shrink-0 dark:bg-[#C8FF2E] dark:text-[#07070B] dark:hover:brightness-110 dark:shadow-[0_0_15px_rgba(200,255,46,0.3)]"
             >
               <FileDown className="h-3.5 w-3.5" />
               <span>CV</span>
@@ -350,7 +350,7 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenCommandPalette }) => {
             <button
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
               aria-label="Toggle navigation menu"
-              className="flex h-8 w-8 items-center justify-center rounded-full border border-slate-200/80 bg-white/80 text-slate-800 shadow-xs lg:hidden cursor-pointer dark:border-white/10 dark:bg-white/5 dark:text-[#EDEDF2]"
+              className="flex h-8 w-8 items-center justify-center rounded-full border border-slate-200/80 bg-white/80 text-slate-800 shadow-xs lg:hidden cursor-pointer whitespace-nowrap shrink-0 dark:border-white/10 dark:bg-white/5 dark:text-[#EDEDF2]"
             >
               {mobileMenuOpen ? <X className="h-4 w-4" /> : <Menu className="h-4 w-4" />}
             </button>
