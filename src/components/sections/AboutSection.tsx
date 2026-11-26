@@ -13,6 +13,7 @@ import { useLanguage } from '../../context/LanguageContext';
 import { useCounter } from '../../hooks/useCounter';
 import { useToast } from '../common/Toast';
 import { FlyingTitle } from '../common/FlyingTitle';
+import { SpotlightCard } from '../common/SpotlightCard';
 
 type TerminalTab = 'whoami' | 'cat_about' | 'internship' | 'stats';
 
@@ -51,84 +52,101 @@ export const AboutSection: React.FC = () => {
           <div className="mt-3 h-1 w-16 rounded-full bg-gradient-to-r from-cyan-400 to-emerald-400" />
         </div>
 
-        {/* 3 Real Metric Counters */}
+        {/* 3 Real Metric Counters with Spotlight Glow */}
         <div className="mb-14 grid grid-cols-1 gap-6 sm:grid-cols-3">
           {/* Stat 1: Deployed Products */}
-          <div
-            ref={deployRef}
-            className="group relative overflow-hidden rounded-2xl border border-white/10 bg-[#0E0E18]/55 p-6 shadow-lg transition-all duration-300 hover:border-cyan-500/40 hover:-translate-y-1 not-dark:bg-white/65 not-dark:border-slate-200"
-          >
-            <div className="flex items-center justify-between">
-              <span className="font-mono text-xs uppercase tracking-widest text-cyan-400">
-                01. DEPLOYED
-              </span>
-              <Rocket className="h-5 w-5 text-cyan-400 opacity-80 group-hover:scale-110 transition-transform" />
-            </div>
-            <div className="mt-4 flex items-baseline space-x-2">
-              <span className="font-mono text-5xl font-extrabold text-white not-dark:text-slate-900 tracking-tight">
-                {deployCount}
-              </span>
-              <span className="font-mono text-xl font-bold text-cyan-400">+</span>
-            </div>
-            <h3 className="mt-2 text-base font-bold text-slate-100 not-dark:text-slate-800">
-              {profileData.stats[0].label[lang]}
-            </h3>
-            <p className="mt-1 text-xs text-slate-400 not-dark:text-slate-600 leading-relaxed">
-              {profileData.stats[0].description[lang]}
-            </p>
-            <div className="absolute bottom-0 left-0 h-1 w-full bg-cyan-500/20 group-hover:bg-cyan-500 transition-colors" />
+          <div ref={deployRef}>
+            <SpotlightCard
+              glowColor="rgba(0, 240, 255, 0.4)"
+              enableTilt={true}
+              className="h-full shadow-lg hover:-translate-y-1 transition-transform"
+            >
+              <div className="p-6">
+                <div className="flex items-center justify-between">
+                  <span className="font-mono text-xs uppercase tracking-widest text-cyan-400 not-dark:text-cyan-700 font-semibold">
+                    01. DEPLOYED
+                  </span>
+                  <Rocket className="h-5 w-5 text-cyan-400 not-dark:text-cyan-600 opacity-90 group-hover:scale-110 transition-transform" />
+                </div>
+                <div className="mt-4 flex items-baseline space-x-2">
+                  <span className="font-mono text-5xl font-extrabold text-white not-dark:text-slate-900 tracking-tight">
+                    {deployCount}
+                  </span>
+                  <span className="font-mono text-xl font-bold text-cyan-400 not-dark:text-cyan-600">+</span>
+                </div>
+                <h3 className="mt-2 text-base font-bold text-slate-100 not-dark:text-slate-800">
+                  {profileData.stats[0].label[lang]}
+                </h3>
+                <p className="mt-1 text-xs text-slate-400 not-dark:text-slate-600 leading-relaxed">
+                  {profileData.stats[0].description[lang]}
+                </p>
+                <div className="mt-4 h-1 w-full rounded-full bg-cyan-500/20 group-hover:bg-cyan-500 transition-colors" />
+              </div>
+            </SpotlightCard>
           </div>
 
           {/* Stat 2: Payment Gateways */}
-          <div
-            ref={paymentRef}
-            className="group relative overflow-hidden rounded-2xl border border-white/10 bg-[#0E0E18]/55 p-6 shadow-lg transition-all duration-300 hover:border-emerald-500/40 hover:-translate-y-1 not-dark:bg-white/65 not-dark:border-slate-200"
-          >
-            <div className="flex items-center justify-between">
-              <span className="font-mono text-xs uppercase tracking-widest text-emerald-400">
-                02. PAYMENTS
-              </span>
-              <CheckCircle className="h-5 w-5 text-emerald-400 opacity-80 group-hover:scale-110 transition-transform" />
-            </div>
-            <div className="mt-4 flex items-baseline space-x-2">
-              <span className="font-mono text-5xl font-extrabold text-white not-dark:text-slate-900 tracking-tight">
-                {paymentCount}
-              </span>
-              <span className="font-mono text-xl font-bold text-emerald-400">GATEWAYS</span>
-            </div>
-            <h3 className="mt-2 text-base font-bold text-slate-100 not-dark:text-slate-800">
-              {profileData.stats[1].label[lang]}
-            </h3>
-            <p className="mt-1 text-xs text-slate-400 not-dark:text-slate-600 leading-relaxed">
-              {profileData.stats[1].description[lang]}
-            </p>
-            <div className="absolute bottom-0 left-0 h-1 w-full bg-emerald-500/20 group-hover:bg-emerald-500 transition-colors" />
+          <div ref={paymentRef}>
+            <SpotlightCard
+              glowColor="rgba(16, 185, 129, 0.4)"
+              enableTilt={true}
+              className="h-full shadow-lg hover:-translate-y-1 transition-transform"
+            >
+              <div className="p-6">
+                <div className="flex items-center justify-between">
+                  <span className="font-mono text-xs uppercase tracking-widest text-emerald-400 not-dark:text-emerald-700 font-semibold">
+                    02. PAYMENTS
+                  </span>
+                  <CheckCircle className="h-5 w-5 text-emerald-400 not-dark:text-emerald-600 opacity-90 group-hover:scale-110 transition-transform" />
+                </div>
+                <div className="mt-4 flex items-baseline space-x-2">
+                  <span className="font-mono text-5xl font-extrabold text-white not-dark:text-slate-900 tracking-tight">
+                    {paymentCount}
+                  </span>
+                  <span className="font-mono text-xl font-bold text-emerald-400 not-dark:text-emerald-600">GATEWAYS</span>
+                </div>
+                <h3 className="mt-2 text-base font-bold text-slate-100 not-dark:text-slate-800">
+                  {profileData.stats[1].label[lang]}
+                </h3>
+                <p className="mt-1 text-xs text-slate-400 not-dark:text-slate-600 leading-relaxed">
+                  {profileData.stats[1].description[lang]}
+                </p>
+                <div className="mt-4 h-1 w-full rounded-full bg-emerald-500/20 group-hover:bg-emerald-500 transition-colors" />
+              </div>
+            </SpotlightCard>
           </div>
 
-          {/* Stat 3: Real Codebase Internship */}
-          <div
-            ref={internRef}
-            className="group relative overflow-hidden rounded-2xl border border-white/10 bg-[#0E0E18]/55 p-6 shadow-lg transition-all duration-300 hover:border-amber-500/40 hover:-translate-y-1 not-dark:bg-white/65 not-dark:border-slate-200"
-          >
-            <div className="flex items-center justify-between">
-              <span className="font-mono text-xs uppercase tracking-widest text-amber-400">
-                03. ENTERPRISE
-              </span>
-              <Briefcase className="h-5 w-5 text-amber-400 opacity-80 group-hover:scale-110 transition-transform" />
-            </div>
-            <div className="mt-4 flex items-baseline space-x-2">
-              <span className="font-mono text-5xl font-extrabold text-white not-dark:text-slate-900 tracking-tight">
-                {internCount}
-              </span>
-              <span className="font-mono text-xl font-bold text-amber-400">KỲ</span>
-            </div>
-            <h3 className="mt-2 text-base font-bold text-slate-100 not-dark:text-slate-800">
-              {profileData.stats[2].label[lang]}
-            </h3>
-            <p className="mt-1 text-xs text-slate-400 not-dark:text-slate-600 leading-relaxed">
-              {profileData.stats[2].description[lang]}
-            </p>
-            <div className="absolute bottom-0 left-0 h-1 w-full bg-amber-500/20 group-hover:bg-amber-500 transition-colors" />
+          {/* Stat 3: Real Codebase Enterprise */}
+          <div ref={internRef}>
+            <SpotlightCard
+              glowColor="rgba(245, 158, 11, 0.4)"
+              enableTilt={true}
+              className="h-full shadow-lg hover:-translate-y-1 transition-transform"
+            >
+              <div className="p-6">
+                <div className="flex items-center justify-between">
+                  <span className="font-mono text-xs uppercase tracking-widest text-amber-400 not-dark:text-amber-700 font-semibold">
+                    03. ENTERPRISE
+                  </span>
+                  <Briefcase className="h-5 w-5 text-amber-400 not-dark:text-amber-600 opacity-90 group-hover:scale-110 transition-transform" />
+                </div>
+                <div className="mt-4 flex items-baseline space-x-2">
+                  <span className="font-mono text-5xl font-extrabold text-white not-dark:text-slate-900 tracking-tight">
+                    {internCount}
+                  </span>
+                  <span className="font-mono text-xl font-bold text-amber-400 not-dark:text-amber-600">
+                    {lang === 'vi' ? 'DỰ ÁN' : 'EXP'}
+                  </span>
+                </div>
+                <h3 className="mt-2 text-base font-bold text-slate-100 not-dark:text-slate-800">
+                  {profileData.stats[2].label[lang]}
+                </h3>
+                <p className="mt-1 text-xs text-slate-400 not-dark:text-slate-600 leading-relaxed">
+                  {profileData.stats[2].description[lang]}
+                </p>
+                <div className="mt-4 h-1 w-full rounded-full bg-amber-500/20 group-hover:bg-amber-500 transition-colors" />
+              </div>
+            </SpotlightCard>
           </div>
         </div>
 
@@ -220,7 +238,7 @@ export const AboutSection: React.FC = () => {
                     </div>
                   </div>
                   <div className="mt-3 text-xs font-mono text-[#8A8A9A]">
-                    <span className="text-[#C8FF2E] font-semibold">Phan Vũ Linh</span> (Fullstack Intern)
+                    <span className="text-[#C8FF2E] font-semibold">Phan Vũ Linh</span> (Fullstack Developer)
                   </div>
                 </div>
 
@@ -236,7 +254,7 @@ export const AboutSection: React.FC = () => {
                   <div className="mt-4 grid grid-cols-1 gap-3 sm:grid-cols-2 text-xs font-mono text-slate-300 not-dark:text-slate-700">
                     <div className="flex items-center space-x-2 rounded-lg bg-white/5 p-2.5 border border-white/5 not-dark:bg-slate-100">
                       <GraduationCap className="h-4 w-4 text-cyan-400 shrink-0" />
-                      <span>ĐH Công nghệ Sài Gòn (2022 - nay)</span>
+                      <span>{lang === 'vi' ? 'ĐH Công nghệ Sài Gòn (STU)' : 'Saigon Technology Univ. (STU)'}</span>
                     </div>
                     <div className="flex items-center space-x-2 rounded-lg bg-white/5 p-2.5 border border-white/5 not-dark:bg-slate-100">
                       <MapPin className="h-4 w-4 text-emerald-400 shrink-0" />
@@ -244,11 +262,11 @@ export const AboutSection: React.FC = () => {
                     </div>
                     <div className="flex items-center space-x-2 rounded-lg bg-white/5 p-2.5 border border-white/5 not-dark:bg-slate-100">
                       <Layers className="h-4 w-4 text-amber-400 shrink-0" />
-                      <span>Event-Service & RBAC Architecture</span>
+                      <span>{lang === 'vi' ? 'Kiến trúc Event-Service & RBAC' : 'Event-Service & RBAC Architecture'}</span>
                     </div>
                     <div className="flex items-center space-x-2 rounded-lg bg-white/5 p-2.5 border border-white/5 not-dark:bg-slate-100">
                       <Briefcase className="h-4 w-4 text-purple-400 shrink-0" />
-                      <span>TechVanguard Intern (2026)</span>
+                      <span>{lang === 'vi' ? 'Kinh nghiệm Doanh nghiệp (2026)' : 'Enterprise Experience (2026)'}</span>
                     </div>
                   </div>
                 </div>
@@ -259,19 +277,23 @@ export const AboutSection: React.FC = () => {
             {activeTab === 'whoami' && (
               <div className="space-y-3 text-xs sm:text-sm text-slate-300 not-dark:text-slate-700">
                 <div className="flex">
-                  <span className="w-32 text-cyan-400 font-semibold">User:</span>
+                  <span className="w-32 text-cyan-400 font-semibold">{lang === 'vi' ? 'Họ và tên:' : 'Full Name:'}</span>
                   <span className="text-slate-100 not-dark:text-slate-900 font-bold">{profileData.name}</span>
                 </div>
                 <div className="flex">
-                  <span className="w-32 text-cyan-400 font-semibold">Role:</span>
+                  <span className="w-32 text-cyan-400 font-semibold">{lang === 'vi' ? 'Định hướng:' : 'Focus Role:'}</span>
                   <span>{profileData.title[lang]}</span>
                 </div>
                 <div className="flex">
-                  <span className="w-32 text-cyan-400 font-semibold">Status:</span>
-                  <span className="text-emerald-400">Final-year Student @ Saigon Technology University</span>
+                  <span className="w-32 text-cyan-400 font-semibold">{lang === 'vi' ? 'Hiện tại:' : 'Status:'}</span>
+                  <span className="text-emerald-400">
+                    {lang === 'vi'
+                      ? 'Sinh viên năm cuối @ ĐH Công nghệ Sài Gòn (STU)'
+                      : 'Final-year Senior @ Saigon Technology University (STU)'}
+                  </span>
                 </div>
                 <div className="flex">
-                  <span className="w-32 text-cyan-400 font-semibold">Phone:</span>
+                  <span className="w-32 text-cyan-400 font-semibold">{lang === 'vi' ? 'Điện thoại:' : 'Phone:'}</span>
                   <span>{profileData.contact.phone}</span>
                 </div>
                 <div className="flex items-center">
@@ -304,18 +326,34 @@ export const AboutSection: React.FC = () => {
             {activeTab === 'internship' && (
               <div className="space-y-3 text-xs sm:text-sm text-slate-300 not-dark:text-slate-700">
                 <div className="text-amber-400 font-semibold">
-                  commit e4a79b2 (HEAD -&gt; main, origin/main)
+                  commit 4f9b8c1 (HEAD -&gt; main, origin/main)
                 </div>
-                <div>Author: Phan Vũ Linh &lt;linhphanzzz04@gmail.com&gt;</div>
-                <div>Date: TechVanguard Enterprise Internship (2026)</div>
+                <div>Author: Phan Vũ Linh &lt;{profileData.contact.email}&gt;</div>
+                <div>Date: TechVanguard Enterprise Experience (2026)</div>
                 <div className="mt-2 text-cyan-300 font-bold">
-                  feat(hotel-management): implement Booking, Room, Billing & Incident workflow
+                  feat(hotel-system): implement decoupled Event Handler – Service layer for Booking &amp; Billing
                 </div>
-                <ul className="mt-2 list-disc pl-5 space-y-1 text-slate-400 font-sans text-xs">
-                  <li>Architecture: Event Handler - Service layer pattern for decoupled modules.</li>
-                  <li>Database & Cache: Optimized MySQL queries, integrated Redis simulation/sandbox.</li>
-                  <li>Quality: Unit/Integration tests coverage with full edge case audit.</li>
-                  <li>Workflow: Team collaboration via Git/Gitea with strict code review loops.</li>
+                <ul className="mt-2 list-disc pl-5 space-y-1.5 text-slate-400 font-sans text-xs">
+                  <li>
+                    {lang === 'vi'
+                      ? 'Kiến trúc: Chuẩn hóa mô hình Event Handler – Service, giải phóng Controller khỏi business logic nặng.'
+                      : 'Architecture: Standardized Event Handler – Service pattern, cleanly decoupling business logic from controllers.'}
+                  </li>
+                  <li>
+                    {lang === 'vi'
+                      ? 'Dữ liệu & Bộ đệm: Tối ưu schema MySQL quan hệ, dựng sandbox Redis cache mô phỏng production để tăng tốc độ phản hồi.'
+                      : 'Data & Cache: Optimized relational queries, introduced Redis caching sandbox to cut API latency.'}
+                  </li>
+                  <li>
+                    {lang === 'vi'
+                      ? 'Kiểm thử toàn diện: Viết Unit & Integration test suites bao phủ các edge case trong trạng thái đổi phòng và lập hóa đơn.'
+                      : 'Rigorous Testing: Engineered Unit & Integration test suites covering edge cases in room state shifts and billing anomalies.'}
+                  </li>
+                  <li>
+                    {lang === 'vi'
+                      ? 'Quy trình team: Phối hợp qua Git/Gitea, thực hiện code review nghiêm túc và chủ động giải quyết technical feedback.'
+                      : 'Team Workflow: Collaborated via Git/Gitea, actively addressing PR code reviews and engineering feedback.'}
+                  </li>
                 </ul>
               </div>
             )}

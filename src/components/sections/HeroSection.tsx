@@ -11,8 +11,10 @@ import {
   Rocket,
   CreditCard,
   ArrowUpRight,
+  Sparkles,
 } from 'lucide-react';
 import { profileData, CV_URL, HERO_ROLES, TLDR_CHIPS } from '../../data/profile';
+import { copyRecruiterBrief } from '../../data/recruiterBrief';
 import { useLanguage } from '../../context/LanguageContext';
 import { useTextScramble } from '../../hooks/useTextScramble';
 import { useMagnetic } from '../../hooks/useMagnetic';
@@ -183,7 +185,7 @@ export const HeroSection: React.FC = () => {
               OPEN TO WORK
             </span>
             <span className="text-slate-400 dark:text-[#8A8A9A]">•</span>
-            <span className="text-slate-600 dark:text-[#8A8A9A] font-medium">Fullstack Intern / Fresher</span>
+            <span className="text-slate-600 dark:text-[#8A8A9A] font-medium">Fullstack / Backend Developer</span>
             <span className="text-slate-400 dark:text-[#8A8A9A]">•</span>
             <span className="flex items-center space-x-1 text-slate-700 dark:text-[#5CE1E6]">
               <Clock className="h-3 w-3 text-emerald-600 dark:text-[#5CE1E6]" />
@@ -319,7 +321,7 @@ export const HeroSection: React.FC = () => {
             <a
               ref={magneticCvRef}
               href={CV_URL}
-              download="CV_PhanVuLinh_FullstackIntern.pdf"
+              download="CV_PhanVuLinh_FullstackDeveloper.pdf"
               className="group relative inline-flex items-center space-x-2.5 overflow-hidden rounded-xl border border-slate-300 bg-slate-100 px-6 py-4 font-mono text-xs sm:text-sm font-semibold text-slate-800 backdrop-blur-xl transition-all duration-200 hover:bg-slate-200 hover:text-slate-950 active:scale-95 dark:border-white/15 dark:bg-[#101018]/80 dark:text-[#EDEDF2] dark:hover:border-[#5CE1E6] dark:hover:text-[#5CE1E6] cursor-pointer"
             >
               <FileDown className="h-4 w-4 text-emerald-700 dark:text-[#5CE1E6] transition-transform group-hover:-translate-y-0.5" />
@@ -365,6 +367,20 @@ export const HeroSection: React.FC = () => {
               <Phone className="h-4 w-4 text-rose-600 dark:text-[#FF6B4A]" />
               <span>{profileData.contact.phone}</span>
             </button>
+
+            {/* Quick HR / Recruiter Candidate Brief (Recruiter Utility) */}
+            <button
+              onClick={() => copyRecruiterBrief(lang, showToast)}
+              title={
+                lang === 'vi'
+                  ? 'Sao chép tóm tắt ứng viên định dạng Markdown gửi cho HR / Tech Lead'
+                  : 'Copy markdown brief for HR / Tech Lead'
+              }
+              className="flex items-center space-x-2 rounded-lg border border-emerald-500/30 bg-emerald-50/70 px-3.5 py-2 font-semibold text-emerald-800 hover:border-emerald-600 hover:bg-emerald-100 transition-all hover:-translate-y-0.5 shadow-xs cursor-pointer dark:border-[#C8FF2E]/30 dark:bg-[#C8FF2E]/10 dark:text-[#C8FF2E] dark:hover:bg-[#C8FF2E]/20"
+            >
+              <Sparkles className="h-4 w-4 text-emerald-600 dark:text-[#C8FF2E] animate-pulse" />
+              <span>{lang === 'vi' ? 'Copy Brief cho HR' : 'Copy Recruiter Brief'}</span>
+            </button>
           </div>
 
           {/* Recruiter-First TL;DR 3-Chip Strip (Nguyên tắc cốt lõi 2) */}
@@ -404,7 +420,7 @@ export const HeroSection: React.FC = () => {
                       <h4 className="font-syne text-sm sm:text-base font-bold text-slate-900 group-hover:text-emerald-700 transition-colors dark:text-[#EDEDF2] dark:group-hover:text-[#C8FF2E]">
                         {chip.title[lang]}
                       </h4>
-                      <p className="mt-0.5 font-sans text-xs text-slate-600 line-clamp-1 dark:text-[#8A8A9A]">
+                      <p className="mt-0.5 font-sans text-xs text-slate-600 line-clamp-2 dark:text-[#8A8A9A]">
                         {chip.subtitle[lang]}
                       </p>
                     </div>

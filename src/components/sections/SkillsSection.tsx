@@ -103,8 +103,8 @@ export const SkillsSection: React.FC = () => {
 
           <p className="mt-3 max-w-xl text-sm sm:text-base text-slate-400 not-dark:text-slate-600 font-sans">
             {lang === 'vi'
-              ? 'Tập trung chuyên sâu vào Backend (Laravel, Node.js), Frontend hiện đại (React 19) và kiến trúc cơ sở dữ liệu có thanh toán thực tế.'
-              : 'Focused on robust Backend (Laravel, Node.js), modern Frontend (React 19), and data architectures with real-world payment flows.'}
+              ? 'Công cụ là phương tiện, cốt lõi là tư duy: thành thạo Backend (Laravel, Node.js), làm chủ Frontend hiện đại (React 19) và luôn đặt tính toàn vẹn dữ liệu, hiệu năng bộ đệm lên hàng đầu.'
+              : 'Tools serve the architecture, grounded in core engineering principles: proficient in Backend (Laravel, Node.js), modern Frontend (React 19), prioritizing data integrity and caching performance.'}
           </p>
         </div>
       </div>
@@ -169,7 +169,7 @@ export const SkillsSection: React.FC = () => {
             className={`rounded-lg px-3.5 py-1.5 font-mono text-xs font-medium transition-all ${
               activeCategory === 'all'
                 ? 'bg-gradient-to-r from-cyan-500 to-emerald-500 text-black font-semibold shadow-lg shadow-cyan-500/20'
-                : 'border border-white/10 bg-white/5 text-slate-400 hover:text-slate-200 not-dark:border-slate-200 not-dark:text-slate-600'
+                : 'border border-white/10 bg-white/5 text-slate-400 hover:text-slate-200 not-dark:border-slate-300 not-dark:text-slate-700 not-dark:bg-white not-dark:hover:bg-slate-100'
             }`}
           >
             {lang === 'vi' ? 'Tất cả kỹ năng' : 'All Technologies'}
@@ -181,7 +181,7 @@ export const SkillsSection: React.FC = () => {
               className={`rounded-lg px-3.5 py-1.5 font-mono text-xs font-medium transition-all ${
                 activeCategory === idx
                   ? 'bg-gradient-to-r from-cyan-500 to-emerald-500 text-black font-semibold shadow-lg shadow-cyan-500/20'
-                  : 'border border-white/10 bg-white/5 text-slate-400 hover:text-slate-200 not-dark:border-slate-200 not-dark:text-slate-600'
+                  : 'border border-white/10 bg-white/5 text-slate-400 hover:text-slate-200 not-dark:border-slate-300 not-dark:text-slate-700 not-dark:bg-white not-dark:hover:bg-slate-100'
               }`}
             >
               {cat.category[lang]}
@@ -194,22 +194,22 @@ export const SkillsSection: React.FC = () => {
           {displayedSkills.map((skill, index) => (
             <div
               key={index}
-              className="group relative overflow-hidden rounded-xl border border-white/10 bg-[#0E0E18]/55 p-4 transition-all duration-200 hover:-translate-y-1 hover:border-cyan-400/50 hover:shadow-[0_0_20px_rgba(0,240,255,0.15)] not-dark:bg-white/70 not-dark:border-slate-200"
+              className="group relative overflow-hidden rounded-xl border border-white/10 bg-[#0E0E18]/55 p-4 transition-all duration-200 hover:-translate-y-1 hover:border-cyan-400/50 hover:shadow-[0_0_20px_rgba(0,240,255,0.15)] not-dark:bg-white/85 not-dark:border-slate-200/90 not-dark:shadow-[0_4px_16px_rgba(0,0,0,0.03)] not-dark:hover:border-emerald-600/50"
             >
               <div className="flex items-center justify-between">
                 <div className="flex h-9 w-9 items-center justify-center rounded-lg bg-white/5 group-hover:bg-cyan-500/10 group-hover:scale-105 transition-all not-dark:bg-slate-100">
                   {getSkillIcon(skill.name)}
                 </div>
                 {skill.featured && (
-                  <span className="rounded bg-cyan-500/20 px-1.5 py-0.5 font-mono text-[9px] font-semibold text-cyan-300 border border-cyan-500/30">
+                  <span className="rounded bg-cyan-500/20 px-1.5 py-0.5 font-mono text-[9px] font-semibold text-cyan-300 border border-cyan-500/30 not-dark:bg-emerald-50 not-dark:border-emerald-200 not-dark:text-emerald-800">
                     CORE
                   </span>
                 )}
               </div>
-              <h3 className="mt-3 font-mono text-xs sm:text-sm font-semibold text-slate-100 not-dark:text-slate-900 group-hover:text-cyan-300 transition-colors">
+              <h3 className="mt-3 font-mono text-xs sm:text-sm font-semibold text-slate-100 not-dark:text-slate-900 group-hover:text-cyan-300 not-dark:group-hover:text-emerald-700 transition-colors">
                 {skill.name}
               </h3>
-              <p className="mt-0.5 text-[10px] font-mono text-slate-500">
+              <p className="mt-0.5 text-[10px] font-mono text-slate-500 not-dark:text-slate-600">
                 {skill.categoryName}
               </p>
             </div>

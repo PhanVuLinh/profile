@@ -48,7 +48,7 @@ export const CVModal: React.FC<CVModalProps> = ({ isOpen, onClose }) => {
             <div>
               <div className="flex items-center space-x-2">
                 <span className="font-syne font-bold text-sm sm:text-base text-slate-900 dark:text-[#EDEDF2]">
-                  CV_PhanVuLinh_FullstackIntern.pdf
+                  CV_PhanVuLinh_FullstackDeveloper.pdf
                 </span>
                 <span className="hidden sm:inline-flex items-center space-x-1 rounded bg-emerald-50 px-2 py-0.5 font-mono text-[10px] text-emerald-700 border border-emerald-200 dark:bg-[#10B981]/15 dark:text-[#10B981] dark:border-[#10B981]/30">
                   <CheckCircle2 className="h-3 w-3" />
@@ -56,7 +56,7 @@ export const CVModal: React.FC<CVModalProps> = ({ isOpen, onClose }) => {
                 </span>
               </div>
               <p className="font-mono text-[11px] text-slate-600 dark:text-[#8A8A9A]">
-                Phan Vũ Linh — Web Developer (Fullstack Intern/Fresher)
+                Phan Vũ Linh — Web Developer (Fullstack / Backend)
               </p>
             </div>
           </div>
@@ -66,7 +66,7 @@ export const CVModal: React.FC<CVModalProps> = ({ isOpen, onClose }) => {
             {/* Direct Download Button */}
             <a
               href={CV_URL}
-              download="CV_PhanVuLinh_FullstackIntern.pdf"
+              download="CV_PhanVuLinh_FullstackDeveloper.pdf"
               className="inline-flex items-center space-x-1.5 rounded-lg bg-slate-900 px-3.5 py-1.5 font-mono text-xs font-bold text-white shadow-sm hover:bg-slate-800 active:scale-95 transition-all dark:bg-[#C8FF2E] dark:text-[#07070B] dark:shadow-[0_0_15px_rgba(200,255,46,0.25)] dark:hover:brightness-110"
             >
               <Download className="h-4 w-4" />
@@ -115,7 +115,7 @@ export const CVModal: React.FC<CVModalProps> = ({ isOpen, onClose }) => {
                 </p>
                 <a
                   href={CV_URL}
-                  download="CV_PhanVuLinh_FullstackIntern.pdf"
+                  download="CV_PhanVuLinh_FullstackDeveloper.pdf"
                   className="rounded-lg bg-slate-900 px-4 py-2 text-white font-bold dark:bg-[#C8FF2E] dark:text-[#07070B]"
                 >
                   {lang === 'vi' ? 'Nhấn vào đây để tải CV PDF' : 'Click here to download PDF'}

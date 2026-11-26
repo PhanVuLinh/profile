@@ -21,6 +21,7 @@ import { useTheme } from '../../context/ThemeContext';
 import { useToast } from './Toast';
 import { fireConfetti } from './ConfettiTrigger';
 import { profileData, CV_URL } from '../../data/profile';
+import { copyRecruiterBrief } from '../../data/recruiterBrief';
 
 interface CommandPaletteProps {
   isOpen: boolean;
@@ -112,6 +113,16 @@ export const CommandPalette: React.FC<CommandPaletteProps> = ({ isOpen, onClose 
       run: () => scrollTo('contact'),
     },
     // Actions
+    {
+      id: 'act-recruiter-brief',
+      title: lang === 'vi' ? '📋 Sao chép tóm tắt ứng viên cho Recruiter (Markdown)' : '📋 Copy Recruiter Candidate Brief (Markdown)',
+      category: lang === 'vi' ? 'Hành động nhanh' : 'Quick Actions',
+      icon: <Sparkles className="h-4 w-4 text-emerald-400" />,
+      run: () => {
+        copyRecruiterBrief(lang, showToast);
+        onClose();
+      },
+    },
     {
       id: 'act-download-cv',
       title: lang === 'vi' ? 'Xem / Tải CV (PDF) — Phan Vũ Linh' : 'Preview / Download CV (PDF) — Phan Vu Linh',

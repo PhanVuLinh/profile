@@ -14,6 +14,7 @@ import {
   Activity,
   Feather,
   PowerOff,
+  Sparkles,
 } from 'lucide-react';
 import { useLanguage } from '../../context/LanguageContext';
 import { useTheme } from '../../context/ThemeContext';
@@ -22,6 +23,7 @@ import { useScrollProgress } from '../../hooks/useScrollProgress';
 import { fireConfetti } from './ConfettiTrigger';
 import { useToast } from './Toast';
 import { CV_URL } from '../../data/profile';
+import { copyRecruiterBrief } from '../../data/recruiterBrief';
 import type { QualityTier } from '../../config/effects';
 
 interface NavbarProps {
@@ -320,10 +322,24 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenCommandPalette }) => {
               )}
             </button>
 
+            {/* Quick Recruiter Candidate Brief (HR Utility) */}
+            <button
+              onClick={() => copyRecruiterBrief(lang, showToast)}
+              title={
+                lang === 'vi'
+                  ? 'Sao chép tóm tắt ứng viên cho Recruiter (Markdown)'
+                  : 'Copy Recruiter Candidate Brief (Markdown)'
+              }
+              className="hidden sm:inline-flex h-8 items-center space-x-1.5 rounded-full border border-emerald-500/30 bg-emerald-500/10 px-2.5 font-mono text-xs font-semibold text-emerald-700 hover:bg-emerald-500/20 transition-all cursor-pointer dark:border-[#C8FF2E]/30 dark:bg-[#C8FF2E]/10 dark:text-[#C8FF2E] dark:hover:bg-[#C8FF2E]/20"
+            >
+              <Sparkles className="h-3 w-3 animate-pulse" />
+              <span>{lang === 'vi' ? 'HR Brief' : 'Recruiter Brief'}</span>
+            </button>
+
             {/* Recruiter-First: CV Download Pill */}
             <a
               href={CV_URL}
-              download="CV_PhanVuLinh_FullstackIntern.pdf"
+              download="CV_PhanVuLinh_FullstackDeveloper.pdf"
               className="inline-flex h-8 items-center space-x-1 rounded-full px-3 font-mono text-xs font-bold shadow-sm transition-all active:scale-95 bg-slate-900 text-white hover:bg-slate-800 dark:bg-[#C8FF2E] dark:text-[#07070B] dark:hover:brightness-110 dark:shadow-[0_0_15px_rgba(200,255,46,0.3)]"
             >
               <FileDown className="h-3.5 w-3.5" />
@@ -378,7 +394,7 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenCommandPalette }) => {
               </div>
             </div>
 
-            <div className="pt-2 border-t border-slate-200 dark:border-white/10 flex items-center justify-between">
+            <div className="pt-2 border-t border-slate-200 dark:border-white/10 flex flex-wrap items-center justify-between gap-2">
               <button
                 onClick={() => {
                   setMobileMenuOpen(false);
@@ -389,9 +405,19 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenCommandPalette }) => {
                 <Search className="h-3.5 w-3.5 text-emerald-600 dark:text-[#C8FF2E]" />
                 <span>Tìm lệnh (⌘K)</span>
               </button>
+              <button
+                onClick={() => {
+                  setMobileMenuOpen(false);
+                  copyRecruiterBrief(lang, showToast);
+                }}
+                className="flex items-center space-x-1 rounded-lg border border-emerald-500/30 bg-emerald-50 px-2.5 py-1.5 text-xs font-semibold text-emerald-800 dark:border-[#C8FF2E]/30 dark:bg-[#C8FF2E]/15 dark:text-[#C8FF2E]"
+              >
+                <Sparkles className="h-3 w-3" />
+                <span>HR Brief</span>
+              </button>
               <a
                 href={CV_URL}
-                download="CV_PhanVuLinh_FullstackIntern.pdf"
+                download="CV_PhanVuLinh_FullstackDeveloper.pdf"
                 className="rounded-lg bg-slate-900 px-3.5 py-1.5 text-xs font-bold text-white dark:bg-[#C8FF2E] dark:text-[#07070B]"
               >
                 Tải CV PDF

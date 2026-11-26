@@ -10,6 +10,7 @@ import {
 } from 'lucide-react';
 import { GithubIcon } from '../common/Icons';
 import { profileData } from '../../data/profile';
+import { copyRecruiterBrief } from '../../data/recruiterBrief';
 import { useLanguage } from '../../context/LanguageContext';
 import { useToast } from '../common/Toast';
 import { useMagnetic } from '../../hooks/useMagnetic';
@@ -55,8 +56,8 @@ export const ContactSection: React.FC = () => {
 
           <p className="mt-6 max-w-xl text-balance font-sans text-sm sm:text-base md:text-lg text-slate-400 not-dark:text-slate-600 leading-relaxed">
             {lang === 'vi'
-              ? 'Tôi đang tìm kiếm cơ hội thực tập hoặc Fresher Backend / Fullstack Developer tại TP. Hồ Chí Minh. Sẵn sàng phỏng vấn và nhận việc ngay!'
-              : 'Actively seeking Fullstack / Backend Intern or Fresher opportunities in Ho Chi Minh City. Open for interviews and ready to hit the ground running!'}
+              ? 'Tôi đang tìm kiếm cơ hội làm việc ở vị trí Backend / Fullstack Developer tại TP. Hồ Chí Minh. Tôi trân trọng mọi cơ hội được cống hiến, học hỏi từ đội ngũ kỹ sư giàu kinh nghiệm và sẵn sàng tham gia phỏng vấn ngay!'
+              : 'Actively seeking Fullstack / Backend Developer opportunities in Ho Chi Minh City. Eager to contribute dependable code, learn from seasoned engineering mentors, and ready for interviews!'}
           </p>
 
           {/* Magnetic Primary Email Button with Confetti Trigger (Item 2) */}
@@ -131,6 +132,34 @@ export const ContactSection: React.FC = () => {
                 <span>{lang === 'vi' ? 'Mở GitHub' : 'View Profile'}</span>
                 <ArrowUpRight className="h-3.5 w-3.5" />
               </a>
+            </div>
+          </div>
+
+          {/* Recruiter 1-Click Candidate Brief Card */}
+          <div className="mt-4 w-full max-w-3xl">
+            <div className="flex flex-col sm:flex-row items-center justify-between rounded-2xl border border-emerald-500/30 bg-emerald-500/10 p-5 shadow-lg backdrop-blur-xl not-dark:bg-emerald-50/80 not-dark:border-emerald-300 gap-4">
+              <div className="flex items-center space-x-3.5">
+                <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-emerald-500/20 text-emerald-400 not-dark:bg-emerald-200 not-dark:text-emerald-800">
+                  <Send className="h-5 w-5" />
+                </div>
+                <div className="text-left">
+                  <h4 className="font-mono text-xs font-bold text-white not-dark:text-slate-900">
+                    {lang === 'vi' ? 'Dành riêng cho HR & Tech Lead' : 'For HR & Tech Leads'}
+                  </h4>
+                  <p className="font-sans text-xs text-slate-400 not-dark:text-slate-600 mt-0.5">
+                    {lang === 'vi'
+                      ? 'Sao chép tóm tắt định dạng Markdown đầy đủ (kỹ năng, 2 sản phẩm live, kinh nghiệm TechVanguard).'
+                      : '1-click copy formatted Markdown summary (skills, 2 live products, enterprise background).'}
+                  </p>
+                </div>
+              </div>
+              <button
+                onClick={() => copyRecruiterBrief(lang, showToast)}
+                className="inline-flex shrink-0 items-center space-x-2 rounded-xl bg-emerald-400 px-4 py-2.5 font-mono text-xs font-bold text-black shadow-md hover:bg-emerald-300 transition-all active:scale-95 cursor-pointer not-dark:bg-emerald-700 not-dark:text-white not-dark:hover:bg-emerald-800"
+              >
+                <Copy className="h-4 w-4" />
+                <span>{lang === 'vi' ? 'Copy HR Brief' : 'Copy Candidate Brief'}</span>
+              </button>
             </div>
           </div>
 
