@@ -167,14 +167,14 @@ export const HeroSection: React.FC = () => {
         <div className="flex flex-col items-center text-center">
           {/* Status Badge: Open To Work + Live HCMC Clock */}
           <div className="mb-8 inline-flex flex-wrap items-center justify-center gap-2.5 rounded-full border border-slate-200/90 bg-white/90 pl-2 pr-4 py-1.5 font-mono text-xs text-slate-800 shadow-sm backdrop-blur-xl dark:border-[#C8FF2E]/30 dark:bg-[#101018]/90 dark:text-[#EDEDF2] dark:shadow-[0_0_25px_rgba(200,255,46,0.15)]">
-            <div className="relative h-6 w-6 overflow-hidden rounded-full border border-emerald-500/50 shadow-xs dark:border-[#C8FF2E]/60 dark:shadow-[0_0_8px_rgba(200,255,46,0.4)] shrink-0">
+            <div className="relative h-7 w-7 overflow-hidden rounded-full border border-emerald-500/50 shadow-xs dark:border-[#C8FF2E]/60 dark:shadow-[0_0_8px_rgba(200,255,46,0.4)] shrink-0">
               <img
                 src="/avatar.png"
                 alt="Phan Vũ Linh"
                 onError={(e) => {
                   (e.target as HTMLImageElement).src = '/avatar.svg.png';
                 }}
-                className="h-full w-full object-cover object-top"
+                className="h-full w-full object-cover object-center"
               />
             </div>
             <span className="relative flex h-2 w-2">

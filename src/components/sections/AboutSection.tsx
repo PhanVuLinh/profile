@@ -217,18 +217,18 @@ export const AboutSection: React.FC = () => {
             {/* Tab: cat about.md */}
             {activeTab === 'cat_about' && (
               <div className="grid grid-cols-1 gap-8 md:grid-cols-12 items-center">
-                {/* Avatar Placeholder */}
+                {/* Avatar Showcase */}
                 <div className="md:col-span-4 flex flex-col items-center text-center">
                   <div className="relative group">
-                    <div className="relative h-48 w-48 overflow-hidden rounded-2xl border-2 border-[#C8FF2E]/50 shadow-[0_0_30px_rgba(200,255,46,0.25)] transition-transform duration-300 group-hover:scale-105 bg-[#101018]">
-                      {/* Avatar image: loads /avatar.png, falls back to /avatar-placeholder.svg */}
+                    <div className="relative h-56 w-56 sm:h-64 sm:w-64 overflow-hidden rounded-2xl border-2 border-[#C8FF2E]/60 shadow-[0_0_35px_rgba(200,255,46,0.3)] transition-all duration-300 group-hover:scale-105 bg-[#101018] not-dark:border-emerald-600/40 not-dark:shadow-[0_12px_35px_rgba(0,0,0,0.08)]">
+                      {/* Avatar image: cropped headshot filling the entire frame */}
                       <img
                         src="/avatar.png"
                         alt="Phan Vũ Linh — Web Developer"
                         onError={(e) => {
-                          (e.target as HTMLImageElement).src = '/avatar-placeholder.svg';
+                          (e.target as HTMLImageElement).src = '/avatar.svg.png';
                         }}
-                        className="h-full w-full object-cover object-top"
+                        className="h-full w-full object-cover object-center transition-transform duration-500 group-hover:scale-105"
                       />
                     </div>
                     {/* Live pulse indicator */}
@@ -237,8 +237,8 @@ export const AboutSection: React.FC = () => {
                       <span>Ready for Work</span>
                     </div>
                   </div>
-                  <div className="mt-3 text-xs font-mono text-[#8A8A9A]">
-                    <span className="text-[#C8FF2E] font-semibold">Phan Vũ Linh</span> (Fullstack Developer)
+                  <div className="mt-4 text-xs font-mono text-[#8A8A9A]">
+                    <span className="text-[#C8FF2E] not-dark:text-emerald-700 font-bold">Phan Vũ Linh</span> (Fullstack Developer)
                   </div>
                 </div>
 
