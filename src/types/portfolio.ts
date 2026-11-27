@@ -16,6 +16,7 @@ export interface ProfileData {
     email: string;
     github: string;
     githubUrl: string;
+    zaloUrl?: string;
     location: {
       vi: string;
       en: string;

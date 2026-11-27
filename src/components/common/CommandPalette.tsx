@@ -21,6 +21,7 @@ import { useTheme } from '../../context/ThemeContext';
 import { useToast } from './Toast';
 import { fireConfetti } from './ConfettiTrigger';
 import { profileData, CV_URL } from '../../data/profile';
+import { ZaloIcon } from './Icons';
 import { copyRecruiterBrief } from '../../data/recruiterBrief';
 
 interface CommandPaletteProps {
@@ -130,6 +131,16 @@ export const CommandPalette: React.FC<CommandPaletteProps> = ({ isOpen, onClose 
       icon: <FileText className="h-4 w-4 text-[#C8FF2E]" />,
       run: () => {
         window.open(CV_URL, '_blank');
+        onClose();
+      },
+    },
+    {
+      id: 'act-zalo',
+      title: `${lang === 'vi' ? 'Nhắn tin qua Zalo' : 'Chat via Zalo'}: ${profileData.contact.phone}`,
+      category: lang === 'vi' ? 'Hành động nhanh' : 'Quick Actions',
+      icon: <ZaloIcon className="h-4 w-4 text-blue-500" />,
+      run: () => {
+        window.open(profileData.contact.zaloUrl || 'https://zalo.me/0343842424', '_blank', 'noopener,noreferrer');
         onClose();
       },
     },

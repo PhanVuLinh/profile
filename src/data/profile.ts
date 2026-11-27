@@ -6,6 +6,7 @@ export const GITHUB_URL = 'https://github.com/PhanVuLinh';
 export const CV_URL = '/CV_PhanVuLinh_FullstackIntern.pdf';
 export const EMAIL = 'linhphanzzz04@gmail.com';
 export const PHONE = '0343842424';
+export const ZALO_URL = 'https://zalo.me/0343842424';
 export const LOCATION_VI = 'TP. Hồ Chí Minh';
 export const LOCATION_EN = 'Ho Chi Minh City, Vietnam';
 
@@ -69,6 +70,7 @@ export const profileData: ProfileData = {
     email: EMAIL,
     github: 'PhanVuLinh',
     githubUrl: GITHUB_URL,
+    zaloUrl: ZALO_URL,
     location: {
       vi: LOCATION_VI,
       en: LOCATION_EN,

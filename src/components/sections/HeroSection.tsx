@@ -20,7 +20,7 @@ import { useTextScramble } from '../../hooks/useTextScramble';
 import { useMagnetic } from '../../hooks/useMagnetic';
 import { useReducedMotion } from '../../hooks/useReducedMotion';
 import { useToast } from '../common/Toast';
-import { GithubIcon } from '../common/Icons';
+import { GithubIcon, ZaloIcon } from '../common/Icons';
 import { CVModal } from '../common/CVModal';
 
 export const HeroSection: React.FC = () => {
@@ -367,6 +367,18 @@ export const HeroSection: React.FC = () => {
               <Phone className="h-4 w-4 text-rose-600 dark:text-[#FF6B4A]" />
               <span>{profileData.contact.phone}</span>
             </button>
+
+            {/* Direct Zalo Quick Contact */}
+            <a
+              href={profileData.contact.zaloUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              title={lang === 'vi' ? 'Nhắn tin Zalo trực tiếp: 0343842424' : 'Chat via Zalo: 0343842424'}
+              className="flex items-center space-x-2 rounded-lg border border-blue-500/30 bg-blue-50/70 px-3.5 py-2 font-semibold text-blue-700 hover:border-blue-500 hover:bg-blue-100 transition-all hover:-translate-y-0.5 shadow-xs cursor-pointer dark:border-blue-500/30 dark:bg-blue-500/10 dark:text-blue-400 dark:hover:bg-blue-500/20"
+            >
+              <ZaloIcon className="h-4 w-4 shrink-0" />
+              <span>Zalo: {profileData.contact.phone}</span>
+            </a>
 
             {/* Quick HR / Recruiter Candidate Brief (Recruiter Utility) */}
             <button

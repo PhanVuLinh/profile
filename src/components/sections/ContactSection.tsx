@@ -8,7 +8,7 @@ import {
   MapPin,
   Clock,
 } from 'lucide-react';
-import { GithubIcon } from '../common/Icons';
+import { GithubIcon, ZaloIcon } from '../common/Icons';
 import { profileData } from '../../data/profile';
 import { copyRecruiterBrief } from '../../data/recruiterBrief';
 import { useLanguage } from '../../context/LanguageContext';
@@ -60,8 +60,8 @@ export const ContactSection: React.FC = () => {
               : 'Actively seeking Fullstack / Backend Developer opportunities in Ho Chi Minh City. Eager to contribute dependable code, learn from seasoned engineering mentors, and ready for interviews!'}
           </p>
 
-          {/* Magnetic Primary Email Button with Confetti Trigger (Item 2) */}
-          <div className="mt-10">
+          {/* Action Buttons: Primary Email + Direct Zalo Button */}
+          <div className="mt-10 flex flex-wrap items-center justify-center gap-4">
             <a
               ref={magneticMailBtnRef}
               href={`mailto:${profileData.contact.email}?subject=Trao%20đổi%20cơ%20hội%20nghề%20nghiệp%20-%20Phan%20Vũ%20Linh`}
@@ -74,10 +74,25 @@ export const ContactSection: React.FC = () => {
               <span>{profileData.contact.email}</span>
               <ArrowUpRight className="h-5 w-5 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
             </a>
+
+            {/* Direct Zalo Chat Button */}
+            <a
+              href={profileData.contact.zaloUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              onClick={() => {
+                fireConfetti();
+              }}
+              className="group relative inline-flex items-center space-x-3 rounded-2xl border-2 border-blue-500/40 bg-blue-500/10 px-8 py-5 font-mono text-base sm:text-lg font-bold text-blue-400 shadow-xl shadow-blue-500/10 transition-all duration-200 hover:scale-105 hover:bg-blue-600 hover:text-white hover:border-blue-600 hover:shadow-blue-500/30 active:scale-95 cursor-pointer not-dark:bg-blue-50 not-dark:text-blue-700 not-dark:border-blue-300 not-dark:hover:bg-blue-600 not-dark:hover:text-white"
+            >
+              <ZaloIcon className="h-5 w-5 shrink-0" />
+              <span>{lang === 'vi' ? 'Nhắn Zalo ngay' : 'Chat via Zalo'}</span>
+              <ArrowUpRight className="h-5 w-5 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
+            </a>
           </div>
 
           {/* Quick Copy Contact Cards */}
-          <div className="mt-12 grid w-full max-w-3xl grid-cols-1 gap-4 sm:grid-cols-3">
+          <div className="mt-12 grid w-full max-w-4xl grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-4">
             {/* Copy Email */}
             <div className="flex flex-col items-center justify-between rounded-2xl border border-white/10 bg-[#0E0E18]/60 p-5 shadow-lg not-dark:bg-white/70 not-dark:border-slate-200">
               <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-cyan-500/10 text-cyan-400">
@@ -92,7 +107,7 @@ export const ContactSection: React.FC = () => {
                 className="mt-4 inline-flex items-center space-x-1.5 rounded-lg border border-cyan-500/30 bg-cyan-500/10 px-3 py-1.5 font-mono text-xs font-medium text-cyan-300 hover:bg-cyan-500/20 transition-colors"
               >
                 <Copy className="h-3.5 w-3.5" />
-                <span>{lang === 'vi' ? 'Sao chép Email' : 'Copy Email'}</span>
+                <span>{lang === 'vi' ? 'Sao chép' : 'Copy'}</span>
               </button>
             </div>
 
@@ -110,8 +125,28 @@ export const ContactSection: React.FC = () => {
                 className="mt-4 inline-flex items-center space-x-1.5 rounded-lg border border-emerald-500/30 bg-emerald-500/10 px-3 py-1.5 font-mono text-xs font-medium text-emerald-300 hover:bg-emerald-500/20 transition-colors"
               >
                 <Copy className="h-3.5 w-3.5" />
-                <span>{lang === 'vi' ? 'Sao chép SĐT' : 'Copy Phone'}</span>
+                <span>{lang === 'vi' ? 'Sao chép' : 'Copy'}</span>
               </button>
+            </div>
+
+            {/* Direct Zalo Chat Card */}
+            <div className="flex flex-col items-center justify-between rounded-2xl border border-white/10 bg-[#0E0E18]/60 p-5 shadow-lg not-dark:bg-white/70 not-dark:border-slate-200">
+              <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-blue-500/10 text-blue-400">
+                <ZaloIcon className="h-5 w-5" />
+              </div>
+              <span className="mt-3 font-mono text-xs text-slate-400">Zalo Chat</span>
+              <span className="mt-1 font-mono text-sm font-semibold text-slate-200 not-dark:text-slate-900">
+                {profileData.contact.phone}
+              </span>
+              <a
+                href={profileData.contact.zaloUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="mt-4 inline-flex items-center space-x-1.5 rounded-lg border border-blue-500/30 bg-blue-500/10 px-3 py-1.5 font-mono text-xs font-medium text-blue-300 hover:bg-blue-500/20 transition-colors not-dark:text-blue-700 not-dark:bg-blue-50 not-dark:border-blue-300"
+              >
+                <span>{lang === 'vi' ? 'Mở Zalo' : 'Open Zalo'}</span>
+                <ArrowUpRight className="h-3.5 w-3.5" />
+              </a>
             </div>
 
             {/* GitHub */}
@@ -136,7 +171,7 @@ export const ContactSection: React.FC = () => {
           </div>
 
           {/* Recruiter 1-Click Candidate Brief Card */}
-          <div className="mt-4 w-full max-w-3xl">
+          <div className="mt-4 w-full max-w-4xl">
             <div className="flex flex-col sm:flex-row items-center justify-between rounded-2xl border border-emerald-500/30 bg-emerald-500/10 p-5 shadow-lg backdrop-blur-xl not-dark:bg-emerald-50/80 not-dark:border-emerald-300 gap-4">
               <div className="flex items-center space-x-3.5">
                 <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-emerald-500/20 text-emerald-400 not-dark:bg-emerald-200 not-dark:text-emerald-800">
