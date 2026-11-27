@@ -70,7 +70,18 @@ export const EducationSection: React.FC = () => {
                     className="flex items-center space-x-2.5 rounded-lg border border-white/5 bg-white/5 p-3 text-xs sm:text-sm text-slate-300 not-dark:bg-slate-50 not-dark:border-slate-200 not-dark:text-slate-700"
                   >
                     <CheckCircle className="h-4 w-4 shrink-0 text-emerald-400 not-dark:text-emerald-600" />
-                    <span>{item}</span>
+                    <span>
+                      {item.includes(': ') ? (
+                        <>
+                          <strong className="text-white not-dark:text-slate-900 font-bold">
+                            {item.split(': ')[0]}:
+                          </strong>{' '}
+                          <span>{item.split(': ').slice(1).join(': ')}</span>
+                        </>
+                      ) : (
+                        item
+                      )}
+                    </span>
                   </div>
                 ))}
               </div>

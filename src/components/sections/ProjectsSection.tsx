@@ -65,7 +65,18 @@ const ProjectCard: React.FC<ProjectCardProps> = ({ project, onOpenModal }) => {
                 <div className="mt-1 flex h-4 w-4 shrink-0 items-center justify-center rounded-full bg-cyan-500/20 text-cyan-400 not-dark:bg-emerald-100 not-dark:text-emerald-700">
                   <CheckCircle2 className="h-3 w-3" />
                 </div>
-                <span>{hl}</span>
+                <span>
+                  {hl.includes(': ') ? (
+                    <>
+                      <strong className="text-white not-dark:text-slate-900 font-bold">
+                        {hl.split(': ')[0]}:
+                      </strong>{' '}
+                      <span>{hl.split(': ').slice(1).join(': ')}</span>
+                    </>
+                  ) : (
+                    hl
+                  )}
+                </span>
               </div>
             ))}
           </div>
@@ -232,7 +243,18 @@ export const ProjectsSection: React.FC<ProjectsSectionProps> = ({ onOpenJobInqui
                 {selectedProject.highlights[lang].map((hl, idx) => (
                   <div key={idx} className="flex items-start space-x-3 rounded-lg border border-white/5 bg-white/5 p-3">
                     <CheckCircle2 className="mt-0.5 h-4 w-4 shrink-0 text-cyan-400" />
-                    <span>{hl}</span>
+                    <span>
+                  {hl.includes(': ') ? (
+                    <>
+                      <strong className="text-white not-dark:text-slate-900 font-bold">
+                        {hl.split(': ')[0]}:
+                      </strong>{' '}
+                      <span>{hl.split(': ').slice(1).join(': ')}</span>
+                    </>
+                  ) : (
+                    hl
+                  )}
+                </span>
                   </div>
                 ))}
               </div>

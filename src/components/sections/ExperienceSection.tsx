@@ -116,7 +116,18 @@ export const ExperienceSection: React.FC = () => {
                       <div className="mt-1 flex h-4 w-4 shrink-0 items-center justify-center rounded-full bg-cyan-500/15 text-cyan-400 not-dark:bg-amber-100 not-dark:text-amber-800">
                         <CheckCircle2 className="h-3.5 w-3.5" />
                       </div>
-                      <span>{resp}</span>
+                      <span>
+                        {resp.includes(': ') ? (
+                          <>
+                            <strong className="text-white not-dark:text-slate-900 font-bold">
+                              {resp.split(': ')[0]}:
+                            </strong>{' '}
+                            <span>{resp.split(': ').slice(1).join(': ')}</span>
+                          </>
+                        ) : (
+                          resp
+                        )}
+                      </span>
                     </div>
                   ))}
                 </div>
@@ -129,8 +140,8 @@ export const ExperienceSection: React.FC = () => {
                   </div>
                   <p className="font-sans text-xs text-slate-400 not-dark:text-slate-600 leading-relaxed">
                     {lang === 'vi'
-                      ? 'Bài học giá trị nhất khi phát triển hệ thống doanh nghiệp không chỉ là cú pháp framework, mà là tinh thần trách nhiệm với từng dòng code: thấu hiểu lý do đằng sau các phản biện của Tech Lead, kiên nhẫn bẻ nhỏ bài toán và rèn luyện tư duy phòng ngừa rủi ro cho toàn hệ thống.'
-                      : 'The most defining takeaway from working on an enterprise codebase was engineering accountability: truly understanding the rationale behind Tech Lead code reviews, methodically decomposing complex domain logic, and developing a preventive mindset for system stability.'}
+                      ? 'Code tốt không chỉ chạy đúng logic, mà phải an toàn trước dữ liệu lỗi, có tính kế thừa cho team và luôn được bảo vệ bằng kiểm thử.'
+                      : 'Good code does not just work on happy paths; it stays resilient against edge-case data, remains maintainable, and is defended by automated tests.'}
                   </p>
                 </div>
               </div>

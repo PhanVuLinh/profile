@@ -6,7 +6,6 @@ import {
   MapPin,
   GraduationCap,
   Briefcase,
-  Layers,
 } from 'lucide-react';
 import { profileData } from '../../data/profile';
 import { useLanguage } from '../../context/LanguageContext';
@@ -258,16 +257,62 @@ export const AboutSection: React.FC = () => {
                   </div>
                 </div>
 
-                {/* Bio text */}
+                {/* Bio text & Focused Key Takeaways */}
                 <div className="md:col-span-8 font-sans">
-                  <div className="rounded-xl border border-white/10 bg-white/5 p-5 leading-relaxed not-dark:bg-slate-50 not-dark:border-slate-200">
-                    <p className="text-sm sm:text-base text-slate-200 not-dark:text-slate-800">
-                      {profileData.intro[lang]}
-                    </p>
+                  {/* Punchy Core Hook */}
+                  <div className="rounded-xl border border-cyan-500/30 bg-cyan-500/10 p-3.5 sm:p-4 text-cyan-200 not-dark:text-cyan-950 not-dark:bg-cyan-50 font-medium text-xs sm:text-sm leading-relaxed">
+                    {lang === 'vi'
+                      ? '⚡ Web Developer (Fullstack / Backend) chú trọng kiến trúc hệ thống, an toàn dữ liệu và tối ưu hiệu năng.'
+                      : '⚡ Web Developer (Fullstack / Backend) focusing on dependable service architecture, data integrity, and performance.'}
+                  </div>
+
+                  {/* 3 Key Takeaways (Ý chính đánh thẳng trọng tâm) */}
+                  <div className="mt-3 space-y-2 text-xs sm:text-sm">
+                    <div className="flex items-start space-x-2.5 rounded-xl border border-white/10 bg-white/5 p-3 not-dark:bg-slate-50 not-dark:border-slate-200">
+                      <Briefcase className="h-4 w-4 text-amber-400 shrink-0 mt-0.5" />
+                      <div>
+                        <span className="font-bold text-slate-100 not-dark:text-slate-900">
+                          {lang === 'vi' ? 'Kinh nghiệm Doanh nghiệp: ' : 'Enterprise Experience: '}
+                        </span>
+                        <span className="text-slate-300 not-dark:text-slate-700">
+                          {lang === 'vi'
+                            ? 'Backend khách sạn tại TechVanguard (kiến trúc Event-Service, cache Redis, Docker sandbox, Unit Test).'
+                            : 'Hotel backend at TechVanguard (Event-Service pattern, Redis caching, Docker sandbox, Unit Testing).'}
+                        </span>
+                      </div>
+                    </div>
+
+                    <div className="flex items-start space-x-2.5 rounded-xl border border-white/10 bg-white/5 p-3 not-dark:bg-slate-50 not-dark:border-slate-200">
+                      <Rocket className="h-4 w-4 text-cyan-400 shrink-0 mt-0.5" />
+                      <div>
+                        <span className="font-bold text-slate-100 not-dark:text-slate-900">
+                          {lang === 'vi' ? '2 Sản phẩm Live: ' : '2 Live Products: '}
+                        </span>
+                        <span className="text-slate-300 not-dark:text-slate-700">
+                          {lang === 'vi'
+                            ? 'TravelGo & TitiSport (thanh toán VNPay/ZaloPay, vé điện tử QR, concurrency tồn kho, phân quyền RBAC).'
+                            : 'TravelGo & TitiSport (VNPay/ZaloPay IPN, QR ticketing, atomic inventory lock, RBAC security).'}
+                        </span>
+                      </div>
+                    </div>
+
+                    <div className="flex items-start space-x-2.5 rounded-xl border border-white/10 bg-white/5 p-3 not-dark:bg-slate-50 not-dark:border-slate-200">
+                      <CheckCircle className="h-4 w-4 text-emerald-400 shrink-0 mt-0.5" />
+                      <div>
+                        <span className="font-bold text-slate-100 not-dark:text-slate-900">
+                          {lang === 'vi' ? 'Sẵn sàng làm việc: ' : 'Ready for Work: '}
+                        </span>
+                        <span className="text-slate-300 not-dark:text-slate-700">
+                          {lang === 'vi'
+                            ? 'Sinh viên năm cuối CNTT (ĐH STU), sẵn sàng nhận việc ngay tại TP.HCM (Onsite / Hybrid).'
+                            : 'Final-year IT senior at STU, available immediately in HCMC (Onsite / Hybrid) with high accountability.'}
+                        </span>
+                      </div>
+                    </div>
                   </div>
 
                   {/* Highlights Grid */}
-                  <div className="mt-4 grid grid-cols-1 gap-3 sm:grid-cols-2 text-xs font-mono text-slate-300 not-dark:text-slate-700">
+                  <div className="mt-3.5 grid grid-cols-1 gap-2.5 sm:grid-cols-2 text-xs font-mono text-slate-300 not-dark:text-slate-700">
                     <div className="flex items-center space-x-2 rounded-lg bg-white/5 p-2.5 border border-white/5 not-dark:bg-slate-100">
                       <GraduationCap className="h-4 w-4 text-cyan-400 shrink-0" />
                       <span>{lang === 'vi' ? 'ĐH Công nghệ Sài Gòn (STU)' : 'Saigon Technology Univ. (STU)'}</span>
@@ -275,14 +320,6 @@ export const AboutSection: React.FC = () => {
                     <div className="flex items-center space-x-2 rounded-lg bg-white/5 p-2.5 border border-white/5 not-dark:bg-slate-100">
                       <MapPin className="h-4 w-4 text-emerald-400 shrink-0" />
                       <span>{profileData.contact.location[lang]}</span>
-                    </div>
-                    <div className="flex items-center space-x-2 rounded-lg bg-white/5 p-2.5 border border-white/5 not-dark:bg-slate-100">
-                      <Layers className="h-4 w-4 text-amber-400 shrink-0" />
-                      <span>{lang === 'vi' ? 'Kiến trúc Event-Service & RBAC' : 'Event-Service & RBAC Architecture'}</span>
-                    </div>
-                    <div className="flex items-center space-x-2 rounded-lg bg-white/5 p-2.5 border border-white/5 not-dark:bg-slate-100">
-                      <Briefcase className="h-4 w-4 text-purple-400 shrink-0" />
-                      <span>{lang === 'vi' ? 'Kinh nghiệm Doanh nghiệp (2026)' : 'Enterprise Experience (2026)'}</span>
                     </div>
                   </div>
                 </div>
