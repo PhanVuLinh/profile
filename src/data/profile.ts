@@ -93,7 +93,7 @@ export const profileData: ProfileData = {
     {
       value: 2,
       label: {
-        vi: 'Sản phẩm chạy Production',
+        vi: 'Sản phẩm Production',
         en: 'Production Deployments',
       },
       description: {
@@ -104,7 +104,7 @@ export const profileData: ProfileData = {
     {
       value: 2,
       label: {
-        vi: 'Cổng thanh toán Trực tuyến',
+        vi: 'Cổng thanh toán Online',
         en: 'Payment Gateway Integrations',
       },
       description: {
@@ -115,7 +115,7 @@ export const profileData: ProfileData = {
     {
       value: 1,
       label: {
-        vi: 'Kinh nghiệm Codebase Doanh nghiệp',
+        vi: 'Hệ thống Doanh nghiệp',
         en: 'Enterprise Codebase Experience',
       },
       description: {

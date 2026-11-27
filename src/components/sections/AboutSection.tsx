@@ -52,99 +52,115 @@ export const AboutSection: React.FC = () => {
           <div className="mt-3 h-1 w-16 rounded-full bg-gradient-to-r from-cyan-400 to-emerald-400" />
         </div>
 
-        {/* 3 Real Metric Counters with Spotlight Glow */}
-        <div className="mb-14 grid grid-cols-1 gap-6 sm:grid-cols-3">
+        {/* 3 Real Metric Counters with Spotlight Glow (Symmetrical & Equal Height) */}
+        <div className="mb-14 grid grid-cols-1 gap-6 sm:grid-cols-3 items-stretch">
           {/* Stat 1: Deployed Products */}
-          <div ref={deployRef}>
+          <div ref={deployRef} className="h-full">
             <SpotlightCard
               glowColor="rgba(0, 240, 255, 0.4)"
               enableTilt={true}
               className="h-full shadow-lg hover:-translate-y-1 transition-transform"
             >
-              <div className="p-6">
-                <div className="flex items-center justify-between">
-                  <span className="font-mono text-xs uppercase tracking-widest text-cyan-400 not-dark:text-cyan-700 font-semibold">
-                    01. DEPLOYED
-                  </span>
-                  <Rocket className="h-5 w-5 text-cyan-400 not-dark:text-cyan-600 opacity-90 group-hover:scale-110 transition-transform" />
+              <div className="flex flex-col justify-between h-full p-6 sm:p-7">
+                <div>
+                  <div className="flex items-center justify-between">
+                    <span className="font-mono text-xs uppercase tracking-widest text-cyan-400 not-dark:text-cyan-700 font-semibold">
+                      01. DEPLOYED
+                    </span>
+                    <Rocket className="h-5 w-5 text-cyan-400 not-dark:text-cyan-600 opacity-90 group-hover:scale-110 transition-transform" />
+                  </div>
+                  <div className="mt-4 flex items-baseline space-x-2">
+                    <span className="font-mono text-5xl font-extrabold text-white not-dark:text-slate-900 tracking-tight">
+                      {deployCount}
+                    </span>
+                    <span className="font-mono text-xs sm:text-sm font-bold uppercase tracking-wider text-cyan-400 not-dark:text-cyan-700">
+                      {lang === 'vi' ? 'SẢN PHẨM' : 'PROJECTS'}
+                    </span>
+                  </div>
+                  <h3 className="mt-3 text-base font-bold text-slate-100 not-dark:text-slate-800 leading-snug whitespace-nowrap overflow-hidden text-ellipsis">
+                    {profileData.stats[0].label[lang]}
+                  </h3>
+                  <p className="mt-1.5 text-xs text-slate-400 not-dark:text-slate-600 leading-relaxed min-h-[2.5rem]">
+                    {profileData.stats[0].description[lang]}
+                  </p>
                 </div>
-                <div className="mt-4 flex items-baseline space-x-2">
-                  <span className="font-mono text-5xl font-extrabold text-white not-dark:text-slate-900 tracking-tight">
-                    {deployCount}
-                  </span>
-                  <span className="font-mono text-xl font-bold text-cyan-400 not-dark:text-cyan-600">+</span>
+                <div className="mt-5 pt-1">
+                  <div className="h-1 w-full rounded-full bg-cyan-500/20 group-hover:bg-cyan-500 transition-colors" />
                 </div>
-                <h3 className="mt-2 text-base font-bold text-slate-100 not-dark:text-slate-800">
-                  {profileData.stats[0].label[lang]}
-                </h3>
-                <p className="mt-1 text-xs text-slate-400 not-dark:text-slate-600 leading-relaxed">
-                  {profileData.stats[0].description[lang]}
-                </p>
-                <div className="mt-4 h-1 w-full rounded-full bg-cyan-500/20 group-hover:bg-cyan-500 transition-colors" />
               </div>
             </SpotlightCard>
           </div>
 
           {/* Stat 2: Payment Gateways */}
-          <div ref={paymentRef}>
+          <div ref={paymentRef} className="h-full">
             <SpotlightCard
               glowColor="rgba(16, 185, 129, 0.4)"
               enableTilt={true}
               className="h-full shadow-lg hover:-translate-y-1 transition-transform"
             >
-              <div className="p-6">
-                <div className="flex items-center justify-between">
-                  <span className="font-mono text-xs uppercase tracking-widest text-emerald-400 not-dark:text-emerald-700 font-semibold">
-                    02. PAYMENTS
-                  </span>
-                  <CheckCircle className="h-5 w-5 text-emerald-400 not-dark:text-emerald-600 opacity-90 group-hover:scale-110 transition-transform" />
+              <div className="flex flex-col justify-between h-full p-6 sm:p-7">
+                <div>
+                  <div className="flex items-center justify-between">
+                    <span className="font-mono text-xs uppercase tracking-widest text-emerald-400 not-dark:text-emerald-700 font-semibold">
+                      02. PAYMENTS
+                    </span>
+                    <CheckCircle className="h-5 w-5 text-emerald-400 not-dark:text-emerald-600 opacity-90 group-hover:scale-110 transition-transform" />
+                  </div>
+                  <div className="mt-4 flex items-baseline space-x-2">
+                    <span className="font-mono text-5xl font-extrabold text-white not-dark:text-slate-900 tracking-tight">
+                      {paymentCount}
+                    </span>
+                    <span className="font-mono text-xs sm:text-sm font-bold uppercase tracking-wider text-emerald-400 not-dark:text-emerald-700">
+                      {lang === 'vi' ? 'CỔNG LIVE' : 'GATEWAYS'}
+                    </span>
+                  </div>
+                  <h3 className="mt-3 text-base font-bold text-slate-100 not-dark:text-slate-800 leading-snug whitespace-nowrap overflow-hidden text-ellipsis">
+                    {profileData.stats[1].label[lang]}
+                  </h3>
+                  <p className="mt-1.5 text-xs text-slate-400 not-dark:text-slate-600 leading-relaxed min-h-[2.5rem]">
+                    {profileData.stats[1].description[lang]}
+                  </p>
                 </div>
-                <div className="mt-4 flex items-baseline space-x-2">
-                  <span className="font-mono text-5xl font-extrabold text-white not-dark:text-slate-900 tracking-tight">
-                    {paymentCount}
-                  </span>
-                  <span className="font-mono text-xl font-bold text-emerald-400 not-dark:text-emerald-600">GATEWAYS</span>
+                <div className="mt-5 pt-1">
+                  <div className="h-1 w-full rounded-full bg-emerald-500/20 group-hover:bg-emerald-500 transition-colors" />
                 </div>
-                <h3 className="mt-2 text-base font-bold text-slate-100 not-dark:text-slate-800">
-                  {profileData.stats[1].label[lang]}
-                </h3>
-                <p className="mt-1 text-xs text-slate-400 not-dark:text-slate-600 leading-relaxed">
-                  {profileData.stats[1].description[lang]}
-                </p>
-                <div className="mt-4 h-1 w-full rounded-full bg-emerald-500/20 group-hover:bg-emerald-500 transition-colors" />
               </div>
             </SpotlightCard>
           </div>
 
           {/* Stat 3: Real Codebase Enterprise */}
-          <div ref={internRef}>
+          <div ref={internRef} className="h-full">
             <SpotlightCard
               glowColor="rgba(245, 158, 11, 0.4)"
               enableTilt={true}
               className="h-full shadow-lg hover:-translate-y-1 transition-transform"
             >
-              <div className="p-6">
-                <div className="flex items-center justify-between">
-                  <span className="font-mono text-xs uppercase tracking-widest text-amber-400 not-dark:text-amber-700 font-semibold">
-                    03. ENTERPRISE
-                  </span>
-                  <Briefcase className="h-5 w-5 text-amber-400 not-dark:text-amber-600 opacity-90 group-hover:scale-110 transition-transform" />
+              <div className="flex flex-col justify-between h-full p-6 sm:p-7">
+                <div>
+                  <div className="flex items-center justify-between">
+                    <span className="font-mono text-xs uppercase tracking-widest text-amber-400 not-dark:text-amber-700 font-semibold">
+                      03. ENTERPRISE
+                    </span>
+                    <Briefcase className="h-5 w-5 text-amber-400 not-dark:text-amber-600 opacity-90 group-hover:scale-110 transition-transform" />
+                  </div>
+                  <div className="mt-4 flex items-baseline space-x-2">
+                    <span className="font-mono text-5xl font-extrabold text-white not-dark:text-slate-900 tracking-tight">
+                      {internCount}
+                    </span>
+                    <span className="font-mono text-xs sm:text-sm font-bold uppercase tracking-wider text-amber-400 not-dark:text-amber-700">
+                      {lang === 'vi' ? 'HỆ THỐNG' : 'CODEBASE'}
+                    </span>
+                  </div>
+                  <h3 className="mt-3 text-base font-bold text-slate-100 not-dark:text-slate-800 leading-snug whitespace-nowrap overflow-hidden text-ellipsis">
+                    {profileData.stats[2].label[lang]}
+                  </h3>
+                  <p className="mt-1.5 text-xs text-slate-400 not-dark:text-slate-600 leading-relaxed min-h-[2.5rem]">
+                    {profileData.stats[2].description[lang]}
+                  </p>
                 </div>
-                <div className="mt-4 flex items-baseline space-x-2">
-                  <span className="font-mono text-5xl font-extrabold text-white not-dark:text-slate-900 tracking-tight">
-                    {internCount}
-                  </span>
-                  <span className="font-mono text-xl font-bold text-amber-400 not-dark:text-amber-600">
-                    {lang === 'vi' ? 'DỰ ÁN' : 'EXP'}
-                  </span>
+                <div className="mt-5 pt-1">
+                  <div className="h-1 w-full rounded-full bg-amber-500/20 group-hover:bg-amber-500 transition-colors" />
                 </div>
-                <h3 className="mt-2 text-base font-bold text-slate-100 not-dark:text-slate-800">
-                  {profileData.stats[2].label[lang]}
-                </h3>
-                <p className="mt-1 text-xs text-slate-400 not-dark:text-slate-600 leading-relaxed">
-                  {profileData.stats[2].description[lang]}
-                </p>
-                <div className="mt-4 h-1 w-full rounded-full bg-amber-500/20 group-hover:bg-amber-500 transition-colors" />
               </div>
             </SpotlightCard>
           </div>
