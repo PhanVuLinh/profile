@@ -45,26 +45,26 @@ export const ContactSection: React.FC<ContactSectionProps> = ({ onOpenJobInquiry
     {
       icon: <Briefcase className="h-4 w-4 text-cyan-400" />,
       label: lang === 'vi' ? 'Vị trí tìm kiếm' : 'Target Position',
-      value: lang === 'vi' ? 'Web Developer (Fullstack / Backend)' : 'Web Developer (Fullstack / Backend)',
-      desc: lang === 'vi' ? 'Laravel, Node.js, React 19, MySQL, Redis' : 'Laravel, Node.js, React 19, MySQL, Redis',
+      value: lang === 'vi' ? 'Fullstack / Backend' : 'Fullstack / Backend',
+      desc: 'Laravel · Node.js · React 19',
     },
     {
       icon: <CalendarCheck2 className="h-4 w-4 text-emerald-400" />,
       label: lang === 'vi' ? 'Khả năng nhận việc' : 'Availability',
-      value: lang === 'vi' ? 'Sẵn sàng nhận việc ngay' : 'Immediate Start',
-      desc: lang === 'vi' ? 'Toàn thời gian (Full-time) / On-site TP.HCM' : 'Full-time / Onsite HCMC or Hybrid',
+      value: lang === 'vi' ? 'Nhận việc ngay' : 'Immediate Start',
+      desc: lang === 'vi' ? 'Full-time · Onsite TP.HCM / Hybrid' : 'Full-time · Onsite HCMC / Hybrid',
     },
     {
       icon: <Clock className="h-4 w-4 text-amber-400" />,
       label: lang === 'vi' ? 'Thời gian phản hồi' : 'Response SLA',
-      value: lang === 'vi' ? 'Dưới 30 phút' : '< 30 Minutes',
-      desc: lang === 'vi' ? 'Ưu tiên qua Zalo (0343842424) & Điện thoại' : 'Fastest via Zalo & Direct Call',
+      value: lang === 'vi' ? '< 30 Phút' : '< 30 Minutes',
+      desc: lang === 'vi' ? 'Ưu tiên Zalo (0343842424) & Hotline' : 'Fast via Zalo & Phone Hotline',
     },
     {
       icon: <Languages className="h-4 w-4 text-purple-400" />,
       label: lang === 'vi' ? 'Giao tiếp & Ngoại ngữ' : 'Language & Docs',
       value: lang === 'vi' ? 'Tiếng Việt & Tiếng Anh' : 'Vietnamese & English',
-      desc: lang === 'vi' ? 'Đọc hiểu tài liệu kỹ thuật, API specs, trao đổi công việc' : 'Technical documentation & API specs',
+      desc: lang === 'vi' ? 'Đọc hiểu tài liệu & API specs' : 'Technical docs & API specs',
     },
   ];
 
@@ -110,25 +110,30 @@ export const ContactSection: React.FC<ContactSectionProps> = ({ onOpenJobInquiry
               </span>
             </div>
 
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3.5">
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3.5 items-stretch">
               {screeningFacts.map((fact, idx) => (
-                <SpotlightCard
-                  key={idx}
-                  enableTilt={false}
-                  glowColor="rgba(0, 240, 255, 0.25)"
-                  className="p-4"
-                >
-                  <div className="flex items-center space-x-2 text-slate-400 not-dark:text-slate-600 mb-2">
-                    {fact.icon}
-                    <span className="font-mono text-[11px] font-semibold uppercase">{fact.label}</span>
-                  </div>
-                  <div className="font-mono text-xs sm:text-sm font-bold text-white not-dark:text-slate-900">
-                    {fact.value}
-                  </div>
-                  <div className="mt-1 text-[11px] font-sans text-slate-400 not-dark:text-slate-600 leading-snug">
-                    {fact.desc}
-                  </div>
-                </SpotlightCard>
+                <div key={idx} className="h-full">
+                  <SpotlightCard
+                    enableTilt={false}
+                    glowColor="rgba(0, 240, 255, 0.25)"
+                    className="h-full shadow-md"
+                  >
+                    <div className="flex flex-col justify-between h-full p-4 sm:p-4.5">
+                      <div>
+                        <div className="flex items-center space-x-2 text-slate-400 not-dark:text-slate-600 mb-2">
+                          {fact.icon}
+                          <span className="font-mono text-[11px] font-semibold uppercase">{fact.label}</span>
+                        </div>
+                        <div className="font-mono text-sm sm:text-base font-bold text-white not-dark:text-slate-900 leading-snug whitespace-nowrap overflow-hidden text-ellipsis">
+                          {fact.value}
+                        </div>
+                        <div className="mt-1.5 text-xs font-sans text-slate-400 not-dark:text-slate-600 leading-relaxed whitespace-nowrap overflow-hidden text-ellipsis">
+                          {fact.desc}
+                        </div>
+                      </div>
+                    </div>
+                  </SpotlightCard>
+                </div>
               ))}
             </div>
           </div>
