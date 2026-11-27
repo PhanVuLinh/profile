@@ -7,6 +7,11 @@ import {
   Send,
   MapPin,
   Clock,
+  Sparkles,
+  CalendarCheck2,
+  Briefcase,
+  Languages,
+  CheckCircle2,
 } from 'lucide-react';
 import { GithubIcon, ZaloIcon } from '../common/Icons';
 import { profileData } from '../../data/profile';
@@ -16,8 +21,13 @@ import { useToast } from '../common/Toast';
 import { useMagnetic } from '../../hooks/useMagnetic';
 import { fireConfetti } from '../common/ConfettiTrigger';
 import { FlyingTitle } from '../common/FlyingTitle';
+import { SpotlightCard } from '../common/SpotlightCard';
 
-export const ContactSection: React.FC = () => {
+interface ContactSectionProps {
+  onOpenJobInquiry?: (topic?: string) => void;
+}
+
+export const ContactSection: React.FC<ContactSectionProps> = ({ onOpenJobInquiry }) => {
   const { lang } = useLanguage();
   const { showToast } = useToast();
   const magneticMailBtnRef = useMagnetic<HTMLAnchorElement>({ strength: 0.35 });
@@ -30,6 +40,33 @@ export const ContactSection: React.FC = () => {
         : `Copied ${label} to clipboard!`
     );
   };
+
+  const screeningFacts = [
+    {
+      icon: <Briefcase className="h-4 w-4 text-cyan-400" />,
+      label: lang === 'vi' ? 'Vị trí tìm kiếm' : 'Target Position',
+      value: lang === 'vi' ? 'Web Developer (Fullstack / Backend)' : 'Web Developer (Fullstack / Backend)',
+      desc: lang === 'vi' ? 'Laravel, Node.js, React 19, MySQL, Redis' : 'Laravel, Node.js, React 19, MySQL, Redis',
+    },
+    {
+      icon: <CalendarCheck2 className="h-4 w-4 text-emerald-400" />,
+      label: lang === 'vi' ? 'Khả năng nhận việc' : 'Availability',
+      value: lang === 'vi' ? 'Sẵn sàng nhận việc ngay' : 'Immediate Start',
+      desc: lang === 'vi' ? 'Toàn thời gian (Full-time) / On-site TP.HCM' : 'Full-time / Onsite HCMC or Hybrid',
+    },
+    {
+      icon: <Clock className="h-4 w-4 text-amber-400" />,
+      label: lang === 'vi' ? 'Thời gian phản hồi' : 'Response SLA',
+      value: lang === 'vi' ? 'Dưới 30 phút' : '< 30 Minutes',
+      desc: lang === 'vi' ? 'Ưu tiên qua Zalo (0343842424) & Điện thoại' : 'Fastest via Zalo & Direct Call',
+    },
+    {
+      icon: <Languages className="h-4 w-4 text-purple-400" />,
+      label: lang === 'vi' ? 'Giao tiếp & Ngoại ngữ' : 'Language & Docs',
+      value: lang === 'vi' ? 'Tiếng Việt & Tiếng Anh' : 'Vietnamese & English',
+      desc: lang === 'vi' ? 'Đọc hiểu tài liệu kỹ thuật, API specs, trao đổi công việc' : 'Technical documentation & API specs',
+    },
+  ];
 
   return (
     <section id="contact" aria-label="Contact Section" className="relative py-24 sm:py-36 overflow-clip">
@@ -44,7 +81,7 @@ export const ContactSection: React.FC = () => {
             <span>06 // READY TO COLLABORATE</span>
           </div>
 
-          {/* Flying Headline (Item 3) */}
+          {/* Flying Headline */}
           <FlyingTitle
             text={
               lang === 'vi'
@@ -56,26 +93,62 @@ export const ContactSection: React.FC = () => {
 
           <p className="mt-6 max-w-xl text-balance font-sans text-sm sm:text-base md:text-lg text-slate-400 not-dark:text-slate-600 leading-relaxed">
             {lang === 'vi'
-              ? 'Tôi đang tìm kiếm cơ hội làm việc ở vị trí Backend / Fullstack Developer tại TP. Hồ Chí Minh. Tôi trân trọng mọi cơ hội được cống hiến, học hỏi từ đội ngũ kỹ sư giàu kinh nghiệm và sẵn sàng tham gia phỏng vấn ngay!'
+              ? 'Tôi đang tìm kiếm cơ hội làm việc ở vị trí Web Developer (Backend / Fullstack) tại TP. Hồ Chí Minh. Tôi trân trọng mọi cơ hội được cống hiến, học hỏi từ đội ngũ kỹ sư giàu kinh nghiệm và sẵn sàng tham gia phỏng vấn ngay!'
               : 'Actively seeking Fullstack / Backend Developer opportunities in Ho Chi Minh City. Eager to contribute dependable code, learn from seasoned engineering mentors, and ready for interviews!'}
           </p>
 
-          {/* Action Buttons: Primary Email + Direct Zalo Button */}
+          {/* Recruiter Quick Screening Cheat Sheet (Bảng thông số tuyển dụng tức thì) */}
+          <div className="mt-12 w-full max-w-4xl text-left">
+            <div className="flex items-center justify-between mb-3 px-1">
+              <span className="font-mono text-xs uppercase tracking-wider text-cyan-400 font-bold flex items-center space-x-2">
+                <Sparkles className="h-3.5 w-3.5" />
+                <span>{lang === 'vi' ? 'Thông tin ứng viên cho HR & Tech Lead' : 'Recruiter & Hiring Cheat Sheet'}</span>
+              </span>
+              <span className="font-mono text-[11px] text-emerald-400 flex items-center space-x-1.5">
+                <CheckCircle2 className="h-3.5 w-3.5" />
+                <span>{lang === 'vi' ? 'Hồ sơ sẵn sàng' : 'Verified Profile'}</span>
+              </span>
+            </div>
+
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3.5">
+              {screeningFacts.map((fact, idx) => (
+                <SpotlightCard
+                  key={idx}
+                  enableTilt={false}
+                  glowColor="rgba(0, 240, 255, 0.25)"
+                  className="p-4"
+                >
+                  <div className="flex items-center space-x-2 text-slate-400 not-dark:text-slate-600 mb-2">
+                    {fact.icon}
+                    <span className="font-mono text-[11px] font-semibold uppercase">{fact.label}</span>
+                  </div>
+                  <div className="font-mono text-xs sm:text-sm font-bold text-white not-dark:text-slate-900">
+                    {fact.value}
+                  </div>
+                  <div className="mt-1 text-[11px] font-sans text-slate-400 not-dark:text-slate-600 leading-snug">
+                    {fact.desc}
+                  </div>
+                </SpotlightCard>
+              ))}
+            </div>
+          </div>
+
+          {/* Primary Action Buttons: Interview Modal + Zalo + Direct Email */}
           <div className="mt-10 flex flex-wrap items-center justify-center gap-4">
-            <a
-              ref={magneticMailBtnRef}
-              href={`mailto:${profileData.contact.email}?subject=Trao%20đổi%20cơ%20hội%20nghề%20nghiệp%20-%20Phan%20Vũ%20Linh`}
+            {/* 1. Open Job Inquiry Modal */}
+            <button
               onClick={() => {
                 fireConfetti();
+                onOpenJobInquiry?.();
               }}
-              className="group relative inline-flex items-center space-x-3 rounded-2xl bg-gradient-to-r from-cyan-400 via-emerald-400 to-cyan-300 px-8 py-5 font-mono text-base sm:text-lg font-bold text-black shadow-2xl shadow-cyan-500/30 transition-all duration-200 hover:scale-105 hover:shadow-cyan-500/50 active:scale-95 cursor-pointer"
+              className="group relative inline-flex items-center space-x-3 rounded-2xl bg-gradient-to-r from-cyan-400 via-emerald-400 to-cyan-300 px-7 py-4.5 font-mono text-base font-bold text-black shadow-2xl shadow-cyan-500/30 transition-all duration-200 hover:scale-105 hover:shadow-cyan-500/50 active:scale-95 cursor-pointer"
             >
               <Send className="h-5 w-5 transition-transform group-hover:translate-x-1" />
-              <span>{profileData.contact.email}</span>
-              <ArrowUpRight className="h-5 w-5 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
-            </a>
+              <span>{lang === 'vi' ? 'Gửi lời mời phỏng vấn' : 'Job / Interview Invitation'}</span>
+              <Sparkles className="h-4 w-4 text-black opacity-80" />
+            </button>
 
-            {/* Direct Zalo Chat Button */}
+            {/* 2. Direct Zalo Chat Button */}
             <a
               href={profileData.contact.zaloUrl}
               target="_blank"
@@ -83,11 +156,24 @@ export const ContactSection: React.FC = () => {
               onClick={() => {
                 fireConfetti();
               }}
-              className="group relative inline-flex items-center space-x-3 rounded-2xl border-2 border-blue-500/40 bg-blue-500/10 px-8 py-5 font-mono text-base sm:text-lg font-bold text-blue-400 shadow-xl shadow-blue-500/10 transition-all duration-200 hover:scale-105 hover:bg-blue-600 hover:text-white hover:border-blue-600 hover:shadow-blue-500/30 active:scale-95 cursor-pointer not-dark:bg-blue-50 not-dark:text-blue-700 not-dark:border-blue-300 not-dark:hover:bg-blue-600 not-dark:hover:text-white"
+              className="group relative inline-flex items-center space-x-3 rounded-2xl border-2 border-blue-500/40 bg-blue-500/10 px-7 py-4.5 font-mono text-base font-bold text-blue-400 shadow-xl shadow-blue-500/10 transition-all duration-200 hover:scale-105 hover:bg-blue-600 hover:text-white hover:border-blue-600 hover:shadow-blue-500/30 active:scale-95 cursor-pointer not-dark:bg-blue-50 not-dark:text-blue-700 not-dark:border-blue-300 not-dark:hover:bg-blue-600 not-dark:hover:text-white"
             >
               <ZaloIcon className="h-5 w-5 shrink-0" />
-              <span>{lang === 'vi' ? 'Nhắn Zalo ngay' : 'Chat via Zalo'}</span>
-              <ArrowUpRight className="h-5 w-5 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
+              <span>{lang === 'vi' ? 'Nhắn Zalo ngay (0343842424)' : 'Chat via Zalo'}</span>
+              <ArrowUpRight className="h-4 w-4 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
+            </a>
+
+            {/* 3. Direct Email */}
+            <a
+              ref={magneticMailBtnRef}
+              href={`mailto:${profileData.contact.email}?subject=Trao%20đổi%20cơ%20hội%20nghề%20nghiệp%20-%20Phan%20Vũ%20Linh`}
+              onClick={() => {
+                fireConfetti();
+              }}
+              className="group inline-flex items-center space-x-2.5 rounded-2xl border border-white/20 bg-white/5 px-6 py-4.5 font-mono text-sm font-semibold text-slate-200 hover:border-cyan-400 hover:text-white transition-all not-dark:border-slate-300 not-dark:bg-white not-dark:text-slate-800 not-dark:hover:border-cyan-600"
+            >
+              <Mail className="h-4 w-4" />
+              <span>{profileData.contact.email}</span>
             </a>
           </div>
 
@@ -104,7 +190,7 @@ export const ContactSection: React.FC = () => {
               </span>
               <button
                 onClick={() => handleCopy(profileData.contact.email, 'Email')}
-                className="mt-4 inline-flex items-center space-x-1.5 rounded-lg border border-cyan-500/30 bg-cyan-500/10 px-3 py-1.5 font-mono text-xs font-medium text-cyan-300 hover:bg-cyan-500/20 transition-colors"
+                className="mt-4 inline-flex items-center space-x-1.5 rounded-lg border border-cyan-500/30 bg-cyan-500/10 px-3 py-1.5 font-mono text-xs font-medium text-cyan-300 hover:bg-cyan-500/20 transition-colors cursor-pointer"
               >
                 <Copy className="h-3.5 w-3.5" />
                 <span>{lang === 'vi' ? 'Sao chép' : 'Copy'}</span>
@@ -122,7 +208,7 @@ export const ContactSection: React.FC = () => {
               </span>
               <button
                 onClick={() => handleCopy(profileData.contact.phone, lang === 'vi' ? 'Số điện thoại' : 'Phone')}
-                className="mt-4 inline-flex items-center space-x-1.5 rounded-lg border border-emerald-500/30 bg-emerald-500/10 px-3 py-1.5 font-mono text-xs font-medium text-emerald-300 hover:bg-emerald-500/20 transition-colors"
+                className="mt-4 inline-flex items-center space-x-1.5 rounded-lg border border-emerald-500/30 bg-emerald-500/10 px-3 py-1.5 font-mono text-xs font-medium text-emerald-300 hover:bg-emerald-500/20 transition-colors cursor-pointer"
               >
                 <Copy className="h-3.5 w-3.5" />
                 <span>{lang === 'vi' ? 'Sao chép' : 'Copy'}</span>
@@ -215,4 +301,3 @@ export const ContactSection: React.FC = () => {
     </section>
   );
 };
-

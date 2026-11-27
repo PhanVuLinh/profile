@@ -27,9 +27,14 @@ import { copyRecruiterBrief } from '../../data/recruiterBrief';
 interface CommandPaletteProps {
   isOpen: boolean;
   onClose: () => void;
+  onOpenJobInquiry?: (topic?: string) => void;
 }
 
-export const CommandPalette: React.FC<CommandPaletteProps> = ({ isOpen, onClose }) => {
+export const CommandPalette: React.FC<CommandPaletteProps> = ({
+  isOpen,
+  onClose,
+  onOpenJobInquiry,
+}) => {
   const { lang, setLang } = useLanguage();
   const { theme, toggleTheme } = useTheme();
   const { showToast } = useToast();
@@ -114,6 +119,16 @@ export const CommandPalette: React.FC<CommandPaletteProps> = ({ isOpen, onClose 
       run: () => scrollTo('contact'),
     },
     // Actions
+    {
+      id: 'act-job-inquiry',
+      title: lang === 'vi' ? '💼 Gửi lời mời phỏng vấn & Kết nối công việc' : '💼 Send Job & Interview Invitation',
+      category: lang === 'vi' ? 'Hành động nhanh' : 'Quick Actions',
+      icon: <Sparkles className="h-4 w-4 text-cyan-400" />,
+      run: () => {
+        onOpenJobInquiry?.();
+        onClose();
+      },
+    },
     {
       id: 'act-recruiter-brief',
       title: lang === 'vi' ? '📋 Sao chép tóm tắt ứng viên cho Recruiter (Markdown)' : '📋 Copy Recruiter Candidate Brief (Markdown)',

@@ -4,6 +4,7 @@ import {
   CheckCircle2,
   ChevronRight,
   X,
+  MessageSquare,
 } from 'lucide-react';
 import { GithubIcon } from '../common/Icons';
 import { profileData } from '../../data/profile';
@@ -123,7 +124,11 @@ const ProjectCard: React.FC<ProjectCardProps> = ({ project, onOpenModal }) => {
   );
 };
 
-export const ProjectsSection: React.FC = () => {
+interface ProjectsSectionProps {
+  onOpenJobInquiry?: (topic?: string) => void;
+}
+
+export const ProjectsSection: React.FC<ProjectsSectionProps> = ({ onOpenJobInquiry }) => {
   const { lang } = useLanguage();
   const [selectedProject, setSelectedProject] = useState<(typeof profileData.projects)[0] | null>(null);
 
@@ -234,7 +239,7 @@ export const ProjectsSection: React.FC = () => {
             </div>
 
             {/* Links */}
-            <div className="mt-8 flex flex-wrap items-center gap-3 border-t border-white/10 pt-5">
+            <div className="mt-8 flex flex-wrap items-center gap-3 border-t border-white/10 pt-5 not-dark:border-slate-200">
               <a
                 href={selectedProject.demoUrl}
                 target="_blank"
@@ -248,11 +253,28 @@ export const ProjectsSection: React.FC = () => {
                 href={selectedProject.githubUrl}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center space-x-2 rounded-xl border border-white/15 bg-white/5 px-4 py-2.5 font-mono text-xs font-semibold text-slate-200 hover:border-cyan-400 transition-colors"
+                className="inline-flex items-center space-x-2 rounded-xl border border-white/15 bg-white/5 px-4 py-2.5 font-mono text-xs font-semibold text-slate-200 hover:border-cyan-400 transition-colors not-dark:border-slate-300 not-dark:text-slate-800 not-dark:hover:bg-slate-100"
               >
                 <GithubIcon className="h-4 w-4" />
                 <span>Source Code</span>
               </a>
+
+              {/* 1-Click Recruitment / Technical Architecture Inquiry */}
+              <button
+                type="button"
+                onClick={() => {
+                  const topic =
+                    lang === 'vi'
+                      ? `Trao đổi về kiến trúc dự án ${selectedProject.title} (${selectedProject.badge})`
+                      : `Technical discussion regarding ${selectedProject.title} architecture`;
+                  onOpenJobInquiry?.(topic);
+                  setSelectedProject(null);
+                }}
+                className="inline-flex items-center space-x-2 rounded-xl border border-cyan-500/40 bg-cyan-500/10 px-4 py-2.5 font-mono text-xs font-bold text-cyan-300 hover:bg-cyan-500/20 transition-all cursor-pointer not-dark:bg-cyan-50 not-dark:text-cyan-800 not-dark:border-cyan-300"
+              >
+                <MessageSquare className="h-4 w-4 text-cyan-400" />
+                <span>{lang === 'vi' ? 'Trao đổi về dự án này' : 'Discuss This Architecture'}</span>
+              </button>
             </div>
           </div>
         </div>

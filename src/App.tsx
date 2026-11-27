@@ -25,15 +25,24 @@ import { ProjectsSection } from './components/sections/ProjectsSection';
 import { EducationSection } from './components/sections/EducationSection';
 import { ScrollRevealQuote } from './components/sections/ScrollRevealQuote';
 import { ContactSection } from './components/sections/ContactSection';
+import { JobInquiryModal } from './components/common/JobInquiryModal';
+import { QuickConnectDock } from './components/common/QuickConnectDock';
 import { refreshScrollLayout } from './lib/scroll';
 import { updateGlobalScrollState } from './lib/scrollState';
 
 export function PortfolioApp() {
   const [bootCompleted, setBootCompleted] = useState(false);
   const [commandPaletteOpen, setCommandPaletteOpen] = useState(false);
+  const [jobInquiryOpen, setJobInquiryOpen] = useState(false);
+  const [jobInquiryTopic, setJobInquiryTopic] = useState<string | undefined>(undefined);
   const { tier, setBootReady } = useQuality();
   const { lang } = useLanguage();
   const { theme } = useTheme();
+
+  const handleOpenJobInquiry = (topic?: string) => {
+    setJobInquiryTopic(topic);
+    setJobInquiryOpen(true);
+  };
 
   // Refresh scroll and pin geometries when language or theme changes
   useEffect(() => {
@@ -119,6 +128,14 @@ export function PortfolioApp() {
       <CommandPalette
         isOpen={commandPaletteOpen}
         onClose={() => setCommandPaletteOpen(false)}
+        onOpenJobInquiry={handleOpenJobInquiry}
+      />
+
+      {/* Recruiter & Job Inquiry Modal */}
+      <JobInquiryModal
+        isOpen={jobInquiryOpen}
+        onClose={() => setJobInquiryOpen(false)}
+        initialTopic={jobInquiryTopic}
       />
 
       {/* Sticky Auto-Hide Dynamic Island Navbar with Quality FX Popover */}
@@ -139,11 +156,14 @@ export function PortfolioApp() {
         <AboutSection />
         <SkillsSection />
         <ExperienceSection />
-        <ProjectsSection />
+        <ProjectsSection onOpenJobInquiry={handleOpenJobInquiry} />
         <EducationSection />
         <ScrollRevealQuote />
-        <ContactSection />
+        <ContactSection onOpenJobInquiry={handleOpenJobInquiry} />
       </main>
+
+      {/* Floating Recruiter & Job Quick Connect Dock */}
+      <QuickConnectDock onOpenJobInquiry={handleOpenJobInquiry} />
 
       {/* Minimalist Footer */}
       <Footer />
